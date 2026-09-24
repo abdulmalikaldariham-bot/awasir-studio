@@ -1,0 +1,5053 @@
+{
+ "version": 1,
+ "updatedAt": "2026-09-24",
+ "brand": {
+  "name": "أواصر",
+  "signature": "أسرة آل دريهم",
+  "digits": "arabic",
+  "colors": {
+   "navy": "#1C3F4E",
+   "teal": "#336D6E",
+   "light": "#8CC0C7"
+  }
+ },
+ "categories": [
+  {
+   "id": "wedding",
+   "name": "الزواج والمناسبات",
+   "description": "دعوات، إعلانات، تذكير وشكر",
+   "order": 0
+  },
+  {
+   "id": "ramadan",
+   "name": "رمضان",
+   "description": "تهنئة، دخول الشهر، العشر الأواخر",
+   "order": 1
+  },
+  {
+   "id": "eid-fitr",
+   "name": "عيد الفطر",
+   "description": "تهنئة ودعوة اجتماع العيد",
+   "order": 2
+  },
+  {
+   "id": "eid-adha",
+   "name": "عيد الأضحى",
+   "description": "تهنئة ودعوة اجتماع العيد",
+   "order": 3
+  },
+  {
+   "id": "family",
+   "name": "المناسبات العائلية",
+   "description": "دعوات للمناسبات الخاصة بالأسرة",
+   "order": 4
+  },
+  {
+   "id": "greetings",
+   "name": "التهاني والتبريكات",
+   "description": "شكر وتقدير وتهنئة عامة",
+   "order": 5
+  },
+  {
+   "id": "condolences",
+   "name": "التعازي",
+   "description": "تعزية، إعلان وفاة، تفاصيل العزاء",
+   "order": 6
+  },
+  {
+   "id": "births",
+   "name": "المواليد",
+   "description": "إعلان مولود وتهنئة",
+   "order": 7
+  },
+  {
+   "id": "success",
+   "name": "التخرج والنجاح",
+   "description": "تخرج، نجاح، ترقية، وظيفة، إنجاز",
+   "order": 8
+  },
+  {
+   "id": "meetings",
+   "name": "الاجتماعات العائلية",
+   "description": "دعوة، تذكير، مجلس الأسرة",
+   "order": 9
+  },
+  {
+   "id": "programs",
+   "name": "الدورات والبرامج",
+   "description": "دورات، ورش عمل، لقاءات",
+   "order": 10
+  },
+  {
+   "id": "events",
+   "name": "الفعاليات",
+   "description": "رحلات، بطولات، مسابقات",
+   "order": 11
+  },
+  {
+   "id": "announcements",
+   "name": "الإعلانات",
+   "description": "إعلان، تنبيه، خبر",
+   "order": 12
+  },
+  {
+   "id": "general",
+   "name": "تصميم عام",
+   "description": "عنوان ونص بهوية أواصر لأي غرض",
+   "order": 13
+  },
+  {
+   "id": "fund",
+   "name": "صندوق أواصر",
+   "description": "إعلانات الصندوق وتقاريره",
+   "order": 14
+  }
+ ],
+ "templates": [
+  {
+   "id": "wedding-invite",
+   "category": "wedding",
+   "name": "دعوة زواج",
+   "description": "دعوة رسمية بتفاصيل الموعد والمكان",
+   "status": "active",
+   "featured": true,
+   "fields": [
+    {
+     "key": "groomName",
+     "label": "اسم العريس",
+     "type": "text",
+     "required": true,
+     "placeholder": "عبدالله"
+    },
+    {
+     "key": "groomFather",
+     "label": "اسم والد العريس",
+     "type": "text",
+     "placeholder": "خالد بن محمد"
+    },
+    {
+     "key": "familyName",
+     "label": "اسم الأسرة",
+     "type": "text",
+     "placeholder": "آل دريهم"
+    },
+    {
+     "key": "text",
+     "label": "نص الرسالة",
+     "type": "textarea",
+     "presets": true,
+     "required": true
+    },
+    {
+     "key": "date",
+     "label": "التاريخ",
+     "type": "date",
+     "help": "يظهر تلقائياً باليوم والتاريخ الهجري والميلادي"
+    },
+    {
+     "key": "time",
+     "label": "الوقت",
+     "type": "text",
+     "placeholder": "مثال: ٨:٠٠ مساءً أو بعد صلاة العشاء"
+    },
+    {
+     "key": "venue",
+     "label": "اسم القاعة",
+     "type": "text",
+     "required": true,
+     "placeholder": "قاعة ..."
+    },
+    {
+     "key": "city",
+     "label": "المدينة",
+     "type": "text",
+     "placeholder": "الرياض"
+    },
+    {
+     "key": "location",
+     "label": "رابط الموقع",
+     "type": "url",
+     "qr": true,
+     "placeholder": "https://maps.app.goo.gl/...",
+     "help": "يتحول تلقائياً إلى رمز QR داخل التصميم"
+    },
+    {
+     "key": "notes",
+     "label": "ملاحظات إضافية",
+     "type": "textarea",
+     "placeholder": "اختياري"
+    }
+   ],
+   "defaults": {
+    "familyName": "آل دريهم"
+   },
+   "slots": {
+    "eyebrow": "دعوة زواج",
+    "body": "{{text}}",
+    "title": "{{groomName}}",
+    "subtitle": "[[نجل {{groomFather}}]][[ {{familyName}}]]",
+    "details": [
+     {
+      "icon": "calendar",
+      "label": "",
+      "value": "{{date|full}}[[\nالموافق {{date|gregorian}}]]"
+     },
+     {
+      "icon": "clock",
+      "label": "",
+      "value": "{{time}}"
+     },
+     {
+      "icon": "pin",
+      "label": "",
+      "value": "{{venue}}[[، {{city}}]]"
+     }
+    ],
+    "note": "{{notes}}",
+    "qr": "location",
+    "qrLabel": "امسح الرمز للوصول إلى الموقع",
+    "order": "body-first"
+   },
+   "presetGroup": "wedding-invite",
+   "styles": [
+    {
+     "style": "formal",
+     "label": "كلاسيكي",
+     "theme": "navy"
+    },
+    {
+     "style": "minimal",
+     "label": "بسيط",
+     "theme": "light"
+    },
+    {
+     "style": "premium",
+     "label": "فاخر",
+     "theme": "navy"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "optional"
+  },
+  {
+   "id": "wedding-announce",
+   "category": "wedding",
+   "name": "إعلان زواج",
+   "description": "خبر زواج أحد أبناء الأسرة",
+   "status": "active",
+   "featured": false,
+   "fields": [
+    {
+     "key": "groomName",
+     "label": "اسم العريس",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "groomFather",
+     "label": "اسم والد العريس",
+     "type": "text"
+    },
+    {
+     "key": "text",
+     "label": "نص الرسالة",
+     "type": "textarea",
+     "presets": true,
+     "required": true
+    },
+    {
+     "key": "date",
+     "label": "التاريخ",
+     "type": "date",
+     "help": "يظهر تلقائياً باليوم والتاريخ الهجري والميلادي"
+    },
+    {
+     "key": "venue",
+     "label": "المكان",
+     "type": "text",
+     "placeholder": "اسم القاعة أو الاستراحة"
+    },
+    {
+     "key": "city",
+     "label": "المدينة",
+     "type": "text",
+     "placeholder": "الرياض"
+    }
+   ],
+   "defaults": {},
+   "slots": {
+    "eyebrow": "إعلان زواج",
+    "title": "{{groomName}}",
+    "subtitle": "[[نجل {{groomFather}}]]",
+    "body": "{{text}}",
+    "details": [
+     {
+      "icon": "calendar",
+      "label": "",
+      "value": "{{date|full}}[[\nالموافق {{date|gregorian}}]]"
+     },
+     {
+      "icon": "pin",
+      "label": "",
+      "value": "{{venue}}[[، {{city}}]]"
+     }
+    ],
+    "footer": "{{signature}}"
+   },
+   "presetGroup": "wedding-announce",
+   "styles": [
+    {
+     "style": "premium",
+     "label": "فاخر",
+     "theme": "navy"
+    },
+    {
+     "style": "family",
+     "label": "عائلي",
+     "theme": "light"
+    },
+    {
+     "style": "split",
+     "label": "حديث",
+     "theme": "navy"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "optional"
+  },
+  {
+   "id": "wedding-reminder",
+   "category": "wedding",
+   "name": "تذكير بموعد زواج",
+   "description": "تذكير قبل الحفل بيوم أو يومين",
+   "status": "active",
+   "featured": false,
+   "fields": [
+    {
+     "key": "groomName",
+     "label": "اسم العريس",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "text",
+     "label": "نص الرسالة",
+     "type": "textarea",
+     "presets": true,
+     "required": true
+    },
+    {
+     "key": "date",
+     "label": "التاريخ",
+     "type": "date",
+     "help": "يظهر تلقائياً باليوم والتاريخ الهجري والميلادي"
+    },
+    {
+     "key": "time",
+     "label": "الوقت",
+     "type": "text",
+     "placeholder": "مثال: ٨:٠٠ مساءً أو بعد صلاة العشاء"
+    },
+    {
+     "key": "venue",
+     "label": "المكان",
+     "type": "text",
+     "placeholder": "اسم القاعة أو الاستراحة"
+    },
+    {
+     "key": "city",
+     "label": "المدينة",
+     "type": "text",
+     "placeholder": "الرياض"
+    },
+    {
+     "key": "location",
+     "label": "رابط الموقع",
+     "type": "url",
+     "qr": true,
+     "placeholder": "https://maps.app.goo.gl/...",
+     "help": "يتحول تلقائياً إلى رمز QR داخل التصميم"
+    }
+   ],
+   "defaults": {},
+   "slots": {
+    "eyebrow": "تذكير بالموعد",
+    "title": "زواج {{groomName}}",
+    "body": "{{text}}",
+    "details": [
+     {
+      "icon": "calendar",
+      "label": "",
+      "value": "{{date|full}}[[\nالموافق {{date|gregorian}}]]"
+     },
+     {
+      "icon": "clock",
+      "label": "",
+      "value": "{{time}}"
+     },
+     {
+      "icon": "pin",
+      "label": "",
+      "value": "{{venue}}[[، {{city}}]]"
+     }
+    ],
+    "qr": "location",
+    "qrLabel": "موقع الحفل"
+   },
+   "presetGroup": "wedding-reminder",
+   "styles": [
+    {
+     "style": "minimal",
+     "label": "بسيط",
+     "theme": "light"
+    },
+    {
+     "style": "formal",
+     "label": "رسمي",
+     "theme": "teal"
+    },
+    {
+     "style": "split",
+     "label": "حديث",
+     "theme": "navy"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "optional"
+  },
+  {
+   "id": "wedding-congrats",
+   "category": "wedding",
+   "name": "تهنئة بالزواج",
+   "description": "",
+   "status": "active",
+   "featured": false,
+   "fields": [
+    {
+     "key": "groomName",
+     "label": "اسم العريس",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "text",
+     "label": "نص الرسالة",
+     "type": "textarea",
+     "presets": true,
+     "required": true
+    },
+    {
+     "key": "signature",
+     "label": "التوقيع",
+     "type": "text",
+     "placeholder": "أسرة آل دريهم"
+    }
+   ],
+   "defaults": {},
+   "slots": {
+    "eyebrow": "مبارك الزواج",
+    "title": "{{groomName}}",
+    "body": "{{text}}",
+    "footer": "{{signature}}"
+   },
+   "presetGroup": "wedding-congrats",
+   "styles": [
+    {
+     "style": "premium",
+     "label": "فاخر",
+     "theme": "navy"
+    },
+    {
+     "style": "family",
+     "label": "عائلي",
+     "theme": "light"
+    },
+    {
+     "style": "formal",
+     "label": "رسمي",
+     "theme": "teal"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "optional"
+  },
+  {
+   "id": "thanks-after",
+   "category": "wedding",
+   "name": "شكر بعد المناسبة",
+   "description": "",
+   "status": "active",
+   "featured": false,
+   "fields": [
+    {
+     "key": "occasion",
+     "label": "المناسبة",
+     "type": "text",
+     "placeholder": "حفل زواج عبدالله"
+    },
+    {
+     "key": "hostName",
+     "label": "باسم",
+     "type": "text",
+     "required": true,
+     "placeholder": "خالد بن محمد آل دريهم"
+    },
+    {
+     "key": "text",
+     "label": "نص الرسالة",
+     "type": "textarea",
+     "presets": true,
+     "required": true
+    }
+   ],
+   "defaults": {},
+   "slots": {
+    "eyebrow": "شكر وامتنان",
+    "title": "شكراً لحضوركم",
+    "subtitle": "[[{{occasion}}]]",
+    "body": "{{text}}",
+    "footer": "{{hostName}}"
+   },
+   "presetGroup": "thanks",
+   "styles": [
+    {
+     "style": "minimal",
+     "label": "بسيط",
+     "theme": "light"
+    },
+    {
+     "style": "formal",
+     "label": "رسمي",
+     "theme": "navy"
+    },
+    {
+     "style": "family",
+     "label": "عائلي",
+     "theme": "light"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "optional"
+  },
+  {
+   "id": "ramadan-greeting",
+   "category": "ramadan",
+   "name": "تهنئة رمضان",
+   "description": "",
+   "status": "active",
+   "featured": true,
+   "fields": [
+    {
+     "key": "headline",
+     "label": "العنوان",
+     "type": "text",
+     "placeholder": "رمضان مبارك",
+     "required": true
+    },
+    {
+     "key": "year",
+     "label": "السنة الهجرية",
+     "type": "text",
+     "placeholder": "١٤٤٨هـ"
+    },
+    {
+     "key": "text",
+     "label": "نص الرسالة",
+     "type": "textarea",
+     "presets": true,
+     "required": true
+    },
+    {
+     "key": "signature",
+     "label": "التوقيع",
+     "type": "text",
+     "placeholder": "أسرة آل دريهم"
+    }
+   ],
+   "defaults": {
+    "headline": "رمضان مبارك"
+   },
+   "slots": {
+    "eyebrow": "[[رمضان {{year}}]]",
+    "title": "{{headline}}",
+    "body": "{{text}}",
+    "footer": "{{signature}}"
+   },
+   "presetGroup": "ramadan",
+   "styles": [
+    {
+     "style": "split",
+     "label": "حديث",
+     "theme": "navy"
+    },
+    {
+     "style": "formal",
+     "label": "تقليدي",
+     "theme": "navy"
+    },
+    {
+     "style": "minimal",
+     "label": "بسيط",
+     "theme": "light"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "optional"
+  },
+  {
+   "id": "ramadan-start",
+   "category": "ramadan",
+   "name": "دخول شهر رمضان",
+   "description": "",
+   "status": "active",
+   "featured": false,
+   "fields": [
+    {
+     "key": "headline",
+     "label": "العنوان",
+     "type": "text",
+     "placeholder": "أهلاً رمضان",
+     "required": true
+    },
+    {
+     "key": "text",
+     "label": "نص الرسالة",
+     "type": "textarea",
+     "presets": true,
+     "required": true
+    },
+    {
+     "key": "date",
+     "label": "أول أيام الشهر",
+     "type": "date"
+    },
+    {
+     "key": "signature",
+     "label": "التوقيع",
+     "type": "text",
+     "placeholder": "أسرة آل دريهم"
+    }
+   ],
+   "defaults": {
+    "headline": "أهلاً رمضان"
+   },
+   "slots": {
+    "eyebrow": "حلّ الشهر الكريم",
+    "title": "{{headline}}",
+    "body": "{{text}}",
+    "details": [
+     {
+      "icon": "calendar",
+      "label": "أول أيام الصيام",
+      "value": "{{date|full}}"
+     }
+    ],
+    "footer": "{{signature}}"
+   },
+   "presetGroup": "ramadan-start",
+   "styles": [
+    {
+     "style": "premium",
+     "label": "حديث",
+     "theme": "navy"
+    },
+    {
+     "style": "formal",
+     "label": "تقليدي",
+     "theme": "teal"
+    },
+    {
+     "style": "minimal",
+     "label": "بسيط",
+     "theme": "light"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "optional"
+  },
+  {
+   "id": "last-ten",
+   "category": "ramadan",
+   "name": "العشر الأواخر",
+   "description": "",
+   "status": "active",
+   "featured": false,
+   "fields": [
+    {
+     "key": "headline",
+     "label": "العنوان",
+     "type": "text",
+     "placeholder": "العشر الأواخر",
+     "required": true
+    },
+    {
+     "key": "text",
+     "label": "نص الرسالة",
+     "type": "textarea",
+     "presets": true,
+     "required": true
+    },
+    {
+     "key": "signature",
+     "label": "التوقيع",
+     "type": "text",
+     "placeholder": "أسرة آل دريهم"
+    }
+   ],
+   "defaults": {
+    "headline": "العشر الأواخر"
+   },
+   "slots": {
+    "eyebrow": "من رمضان",
+    "title": "{{headline}}",
+    "body": "{{text}}",
+    "footer": "{{signature}}"
+   },
+   "presetGroup": "last-ten",
+   "styles": [
+    {
+     "style": "premium",
+     "label": "حديث",
+     "theme": "navy"
+    },
+    {
+     "style": "formal",
+     "label": "تقليدي",
+     "theme": "navy"
+    },
+    {
+     "style": "minimal",
+     "label": "بسيط",
+     "theme": "light"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "none"
+  },
+  {
+   "id": "laylat-alqadr",
+   "category": "ramadan",
+   "name": "ليلة القدر",
+   "description": "",
+   "status": "active",
+   "featured": false,
+   "fields": [
+    {
+     "key": "headline",
+     "label": "العنوان",
+     "type": "text",
+     "placeholder": "ليلة القدر",
+     "required": true
+    },
+    {
+     "key": "text",
+     "label": "نص الرسالة",
+     "type": "textarea",
+     "presets": true,
+     "required": true
+    },
+    {
+     "key": "signature",
+     "label": "التوقيع",
+     "type": "text",
+     "placeholder": "أسرة آل دريهم"
+    }
+   ],
+   "defaults": {
+    "headline": "ليلة القدر"
+   },
+   "slots": {
+    "eyebrow": "خيرٌ من ألف شهر",
+    "title": "{{headline}}",
+    "body": "{{text}}",
+    "footer": "{{signature}}"
+   },
+   "presetGroup": "qadr",
+   "styles": [
+    {
+     "style": "premium",
+     "label": "حديث",
+     "theme": "navy"
+    },
+    {
+     "style": "formal",
+     "label": "تقليدي",
+     "theme": "navy"
+    },
+    {
+     "style": "minimal",
+     "label": "بسيط",
+     "theme": "light"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "none"
+  },
+  {
+   "id": "eid-fitr-greeting",
+   "category": "eid-fitr",
+   "name": "تهنئة عيد الفطر",
+   "description": "",
+   "status": "active",
+   "featured": true,
+   "fields": [
+    {
+     "key": "headline",
+     "label": "العنوان",
+     "type": "text",
+     "placeholder": "عيد فطر مبارك",
+     "required": true
+    },
+    {
+     "key": "year",
+     "label": "السنة الهجرية",
+     "type": "text",
+     "placeholder": "١٤٤٨هـ"
+    },
+    {
+     "key": "text",
+     "label": "نص الرسالة",
+     "type": "textarea",
+     "presets": true,
+     "required": true
+    },
+    {
+     "key": "signature",
+     "label": "التوقيع",
+     "type": "text",
+     "placeholder": "أسرة آل دريهم"
+    }
+   ],
+   "defaults": {
+    "headline": "عيد فطر مبارك"
+   },
+   "slots": {
+    "eyebrow": "[[عيد الفطر {{year}}]]",
+    "title": "{{headline}}",
+    "body": "{{text}}",
+    "footer": "{{signature}}"
+   },
+   "presetGroup": "eid",
+   "styles": [
+    {
+     "style": "formal",
+     "label": "رسمي",
+     "theme": "navy"
+    },
+    {
+     "style": "family",
+     "label": "عائلي",
+     "theme": "light"
+    },
+    {
+     "style": "premium",
+     "label": "أنيق",
+     "theme": "teal"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "optional"
+  },
+  {
+   "id": "eid-fitr-meeting",
+   "category": "eid-fitr",
+   "name": "دعوة اجتماع عيد الفطر",
+   "description": "",
+   "status": "active",
+   "featured": false,
+   "fields": [
+    {
+     "key": "text",
+     "label": "نص الرسالة",
+     "type": "textarea",
+     "presets": true,
+     "required": true
+    },
+    {
+     "key": "date",
+     "label": "التاريخ",
+     "type": "date",
+     "help": "يظهر تلقائياً باليوم والتاريخ الهجري والميلادي"
+    },
+    {
+     "key": "time",
+     "label": "الوقت",
+     "type": "text",
+     "placeholder": "مثال: ٨:٠٠ مساءً أو بعد صلاة العشاء"
+    },
+    {
+     "key": "venue",
+     "label": "المكان",
+     "type": "text",
+     "placeholder": "اسم القاعة أو الاستراحة"
+    },
+    {
+     "key": "city",
+     "label": "المدينة",
+     "type": "text",
+     "placeholder": "الرياض"
+    },
+    {
+     "key": "location",
+     "label": "رابط الموقع",
+     "type": "url",
+     "qr": true,
+     "placeholder": "https://maps.app.goo.gl/...",
+     "help": "يتحول تلقائياً إلى رمز QR داخل التصميم"
+    },
+    {
+     "key": "host",
+     "label": "الداعي",
+     "type": "text",
+     "placeholder": "أسرة آل دريهم"
+    },
+    {
+     "key": "notes",
+     "label": "ملاحظات إضافية",
+     "type": "textarea",
+     "placeholder": "اختياري"
+    }
+   ],
+   "defaults": {},
+   "slots": {
+    "eyebrow": "عيد الفطر",
+    "title": "اجتماع العيد",
+    "body": "{{text}}",
+    "details": [
+     {
+      "icon": "calendar",
+      "label": "",
+      "value": "{{date|full}}[[\nالموافق {{date|gregorian}}]]"
+     },
+     {
+      "icon": "clock",
+      "label": "",
+      "value": "{{time}}"
+     },
+     {
+      "icon": "pin",
+      "label": "",
+      "value": "{{venue}}[[، {{city}}]]"
+     }
+    ],
+    "note": "{{notes}}",
+    "qr": "location",
+    "qrLabel": "موقع الاجتماع",
+    "footer": "[[{{host}}]]"
+   },
+   "presetGroup": "eid-meeting",
+   "styles": [
+    {
+     "style": "family",
+     "label": "عائلي",
+     "theme": "light"
+    },
+    {
+     "style": "formal",
+     "label": "رسمي",
+     "theme": "navy"
+    },
+    {
+     "style": "split",
+     "label": "حديث",
+     "theme": "teal"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "optional"
+  },
+  {
+   "id": "eid-adha-greeting",
+   "category": "eid-adha",
+   "name": "تهنئة عيد الأضحى",
+   "description": "",
+   "status": "active",
+   "featured": false,
+   "fields": [
+    {
+     "key": "headline",
+     "label": "العنوان",
+     "type": "text",
+     "placeholder": "عيد أضحى مبارك",
+     "required": true
+    },
+    {
+     "key": "year",
+     "label": "السنة الهجرية",
+     "type": "text",
+     "placeholder": "١٤٤٨هـ"
+    },
+    {
+     "key": "text",
+     "label": "نص الرسالة",
+     "type": "textarea",
+     "presets": true,
+     "required": true
+    },
+    {
+     "key": "signature",
+     "label": "التوقيع",
+     "type": "text",
+     "placeholder": "أسرة آل دريهم"
+    }
+   ],
+   "defaults": {
+    "headline": "عيد أضحى مبارك"
+   },
+   "slots": {
+    "eyebrow": "[[عيد الأضحى {{year}}]]",
+    "title": "{{headline}}",
+    "body": "{{text}}",
+    "footer": "{{signature}}"
+   },
+   "presetGroup": "eid-adha",
+   "styles": [
+    {
+     "style": "formal",
+     "label": "رسمي",
+     "theme": "navy"
+    },
+    {
+     "style": "family",
+     "label": "عائلي",
+     "theme": "light"
+    },
+    {
+     "style": "premium",
+     "label": "أنيق",
+     "theme": "teal"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "optional"
+  },
+  {
+   "id": "eid-adha-meeting",
+   "category": "eid-adha",
+   "name": "دعوة اجتماع عيد الأضحى",
+   "description": "",
+   "status": "active",
+   "featured": false,
+   "fields": [
+    {
+     "key": "text",
+     "label": "نص الرسالة",
+     "type": "textarea",
+     "presets": true,
+     "required": true
+    },
+    {
+     "key": "date",
+     "label": "التاريخ",
+     "type": "date",
+     "help": "يظهر تلقائياً باليوم والتاريخ الهجري والميلادي"
+    },
+    {
+     "key": "time",
+     "label": "الوقت",
+     "type": "text",
+     "placeholder": "مثال: ٨:٠٠ مساءً أو بعد صلاة العشاء"
+    },
+    {
+     "key": "venue",
+     "label": "المكان",
+     "type": "text",
+     "placeholder": "اسم القاعة أو الاستراحة"
+    },
+    {
+     "key": "city",
+     "label": "المدينة",
+     "type": "text",
+     "placeholder": "الرياض"
+    },
+    {
+     "key": "location",
+     "label": "رابط الموقع",
+     "type": "url",
+     "qr": true,
+     "placeholder": "https://maps.app.goo.gl/...",
+     "help": "يتحول تلقائياً إلى رمز QR داخل التصميم"
+    },
+    {
+     "key": "host",
+     "label": "الداعي",
+     "type": "text",
+     "placeholder": "أسرة آل دريهم"
+    },
+    {
+     "key": "notes",
+     "label": "ملاحظات إضافية",
+     "type": "textarea",
+     "placeholder": "اختياري"
+    }
+   ],
+   "defaults": {},
+   "slots": {
+    "eyebrow": "عيد الأضحى",
+    "title": "اجتماع العيد",
+    "body": "{{text}}",
+    "details": [
+     {
+      "icon": "calendar",
+      "label": "",
+      "value": "{{date|full}}[[\nالموافق {{date|gregorian}}]]"
+     },
+     {
+      "icon": "clock",
+      "label": "",
+      "value": "{{time}}"
+     },
+     {
+      "icon": "pin",
+      "label": "",
+      "value": "{{venue}}[[، {{city}}]]"
+     }
+    ],
+    "note": "{{notes}}",
+    "qr": "location",
+    "qrLabel": "موقع الاجتماع",
+    "footer": "[[{{host}}]]"
+   },
+   "presetGroup": "eid-meeting",
+   "styles": [
+    {
+     "style": "family",
+     "label": "عائلي",
+     "theme": "light"
+    },
+    {
+     "style": "formal",
+     "label": "رسمي",
+     "theme": "navy"
+    },
+    {
+     "style": "split",
+     "label": "حديث",
+     "theme": "teal"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "optional"
+  },
+  {
+   "id": "newborn",
+   "category": "births",
+   "name": "مولود جديد",
+   "description": "",
+   "status": "active",
+   "featured": true,
+   "fields": [
+    {
+     "key": "babyName",
+     "label": "اسم المولود",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "fatherName",
+     "label": "اسم الأب",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "gender",
+     "label": "الجنس",
+     "type": "select",
+     "options": [
+      "ذكر",
+      "أنثى"
+     ]
+    },
+    {
+     "key": "date",
+     "label": "تاريخ الميلاد",
+     "type": "date"
+    },
+    {
+     "key": "text",
+     "label": "نص الرسالة",
+     "type": "textarea",
+     "presets": true,
+     "required": true
+    },
+    {
+     "key": "extra",
+     "label": "عبارة إضافية",
+     "type": "text",
+     "placeholder": "اختياري"
+    },
+    {
+     "key": "signature",
+     "label": "التوقيع",
+     "type": "text",
+     "placeholder": "أسرة آل دريهم"
+    }
+   ],
+   "defaults": {
+    "gender": "ذكر"
+   },
+   "slots": {
+    "eyebrow": "{{gender|g:مولود جديد:مولودة جديدة}}",
+    "title": "{{babyName}}",
+    "subtitle": "[[{{gender|g:ابن:ابنة}} {{fatherName}}]]",
+    "body": "{{text}}",
+    "details": [
+     {
+      "icon": "calendar",
+      "label": "تاريخ الميلاد",
+      "value": "{{date|hijri}}"
+     }
+    ],
+    "note": "{{extra}}",
+    "footer": "{{signature}}"
+   },
+   "presetGroup": "newborn",
+   "styles": [
+    {
+     "style": "family",
+     "label": "عائلي",
+     "theme": "light"
+    },
+    {
+     "style": "minimal",
+     "label": "بسيط",
+     "theme": "light"
+    },
+    {
+     "style": "premium",
+     "label": "فاخر",
+     "theme": "teal"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "optional"
+  },
+  {
+   "id": "newborn-congrats",
+   "category": "births",
+   "name": "تهنئة بالمولود",
+   "description": "",
+   "status": "active",
+   "featured": false,
+   "fields": [
+    {
+     "key": "fatherName",
+     "label": "اسم الأب",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "babyName",
+     "label": "اسم المولود",
+     "type": "text"
+    },
+    {
+     "key": "gender",
+     "label": "الجنس",
+     "type": "select",
+     "options": [
+      "ذكر",
+      "أنثى"
+     ]
+    },
+    {
+     "key": "text",
+     "label": "نص الرسالة",
+     "type": "textarea",
+     "presets": true,
+     "required": true
+    },
+    {
+     "key": "signature",
+     "label": "التوقيع",
+     "type": "text",
+     "placeholder": "أسرة آل دريهم"
+    }
+   ],
+   "defaults": {
+    "gender": "ذكر"
+   },
+   "slots": {
+    "eyebrow": "تهنئة",
+    "title": "[[{{babyName}}]]",
+    "subtitle": "نبارك لـ {{fatherName}}",
+    "body": "{{text}}",
+    "footer": "{{signature}}"
+   },
+   "presetGroup": "newborn-congrats",
+   "styles": [
+    {
+     "style": "family",
+     "label": "عائلي",
+     "theme": "light"
+    },
+    {
+     "style": "premium",
+     "label": "فاخر",
+     "theme": "navy"
+    },
+    {
+     "style": "minimal",
+     "label": "بسيط",
+     "theme": "light"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "optional"
+  },
+  {
+   "id": "graduation",
+   "category": "success",
+   "name": "تخرج",
+   "description": "",
+   "status": "active",
+   "featured": true,
+   "fields": [
+    {
+     "key": "personName",
+     "label": "الاسم",
+     "type": "text",
+     "required": true,
+     "placeholder": "الاسم الثلاثي"
+    },
+    {
+     "key": "degree",
+     "label": "الدرجة",
+     "type": "text",
+     "placeholder": "البكالوريوس"
+    },
+    {
+     "key": "major",
+     "label": "التخصص",
+     "type": "text"
+    },
+    {
+     "key": "university",
+     "label": "الجامعة أو الجهة",
+     "type": "text"
+    },
+    {
+     "key": "year",
+     "label": "السنة الهجرية",
+     "type": "text",
+     "placeholder": "١٤٤٨هـ"
+    },
+    {
+     "key": "text",
+     "label": "نص الرسالة",
+     "type": "textarea",
+     "presets": true,
+     "required": true
+    },
+    {
+     "key": "signature",
+     "label": "التوقيع",
+     "type": "text",
+     "placeholder": "أسرة آل دريهم"
+    }
+   ],
+   "defaults": {},
+   "slots": {
+    "eyebrow": "مبارك التخرج",
+    "title": "{{personName}}",
+    "subtitle": "[[{{degree}}]][[ في {{major}}]]",
+    "body": "{{text}}",
+    "details": [
+     {
+      "icon": "building",
+      "label": "",
+      "value": "{{university}}"
+     },
+     {
+      "icon": "calendar",
+      "label": "",
+      "value": "{{year}}"
+     }
+    ],
+    "footer": "{{signature}}"
+   },
+   "presetGroup": "graduation",
+   "styles": [
+    {
+     "style": "split",
+     "label": "حديث",
+     "theme": "navy"
+    },
+    {
+     "style": "premium",
+     "label": "فاخر",
+     "theme": "navy"
+    },
+    {
+     "style": "minimal",
+     "label": "بسيط",
+     "theme": "light"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "recommended"
+  },
+  {
+   "id": "success",
+   "category": "success",
+   "name": "نجاح",
+   "description": "",
+   "status": "active",
+   "featured": false,
+   "fields": [
+    {
+     "key": "personName",
+     "label": "الاسم",
+     "type": "text",
+     "required": true,
+     "placeholder": "الاسم الثلاثي"
+    },
+    {
+     "key": "stage",
+     "label": "المرحلة",
+     "type": "text",
+     "placeholder": "الصف الثالث الثانوي"
+    },
+    {
+     "key": "grade",
+     "label": "النسبة أو التقدير",
+     "type": "text",
+     "placeholder": "اختياري"
+    },
+    {
+     "key": "text",
+     "label": "نص الرسالة",
+     "type": "textarea",
+     "presets": true,
+     "required": true
+    },
+    {
+     "key": "signature",
+     "label": "التوقيع",
+     "type": "text",
+     "placeholder": "أسرة آل دريهم"
+    }
+   ],
+   "defaults": {},
+   "slots": {
+    "eyebrow": "مبارك النجاح",
+    "title": "{{personName}}",
+    "subtitle": "[[{{stage}}]][[ بنسبة {{grade}}]]",
+    "body": "{{text}}",
+    "footer": "{{signature}}"
+   },
+   "presetGroup": "success",
+   "styles": [
+    {
+     "style": "family",
+     "label": "عائلي",
+     "theme": "light"
+    },
+    {
+     "style": "split",
+     "label": "حديث",
+     "theme": "teal"
+    },
+    {
+     "style": "minimal",
+     "label": "بسيط",
+     "theme": "light"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "optional"
+  },
+  {
+   "id": "promotion",
+   "category": "success",
+   "name": "ترقية",
+   "description": "",
+   "status": "active",
+   "featured": false,
+   "fields": [
+    {
+     "key": "personName",
+     "label": "الاسم",
+     "type": "text",
+     "required": true,
+     "placeholder": "الاسم الثلاثي"
+    },
+    {
+     "key": "newTitle",
+     "label": "المنصب أو المرتبة الجديدة",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "org",
+     "label": "جهة العمل",
+     "type": "text"
+    },
+    {
+     "key": "text",
+     "label": "نص الرسالة",
+     "type": "textarea",
+     "presets": true,
+     "required": true
+    },
+    {
+     "key": "signature",
+     "label": "التوقيع",
+     "type": "text",
+     "placeholder": "أسرة آل دريهم"
+    }
+   ],
+   "defaults": {},
+   "slots": {
+    "eyebrow": "مبارك الترقية",
+    "title": "{{personName}}",
+    "subtitle": "{{newTitle}}[[ — {{org}}]]",
+    "body": "{{text}}",
+    "footer": "{{signature}}"
+   },
+   "presetGroup": "promotion",
+   "styles": [
+    {
+     "style": "premium",
+     "label": "فاخر",
+     "theme": "navy"
+    },
+    {
+     "style": "minimal",
+     "label": "بسيط",
+     "theme": "light"
+    },
+    {
+     "style": "formal",
+     "label": "رسمي",
+     "theme": "teal"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "optional"
+  },
+  {
+   "id": "new-job",
+   "category": "success",
+   "name": "وظيفة جديدة",
+   "description": "",
+   "status": "active",
+   "featured": false,
+   "fields": [
+    {
+     "key": "personName",
+     "label": "الاسم",
+     "type": "text",
+     "required": true,
+     "placeholder": "الاسم الثلاثي"
+    },
+    {
+     "key": "jobTitle",
+     "label": "المسمى الوظيفي",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "org",
+     "label": "جهة العمل",
+     "type": "text"
+    },
+    {
+     "key": "text",
+     "label": "نص الرسالة",
+     "type": "textarea",
+     "presets": true,
+     "required": true
+    },
+    {
+     "key": "signature",
+     "label": "التوقيع",
+     "type": "text",
+     "placeholder": "أسرة آل دريهم"
+    }
+   ],
+   "defaults": {},
+   "slots": {
+    "eyebrow": "مبارك الوظيفة",
+    "title": "{{personName}}",
+    "subtitle": "{{jobTitle}}[[ في {{org}}]]",
+    "body": "{{text}}",
+    "footer": "{{signature}}"
+   },
+   "presetGroup": "job",
+   "styles": [
+    {
+     "style": "minimal",
+     "label": "بسيط",
+     "theme": "light"
+    },
+    {
+     "style": "split",
+     "label": "حديث",
+     "theme": "navy"
+    },
+    {
+     "style": "premium",
+     "label": "فاخر",
+     "theme": "teal"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "optional"
+  },
+  {
+   "id": "achievement",
+   "category": "success",
+   "name": "إنجاز لأحد أفراد الأسرة",
+   "description": "",
+   "status": "active",
+   "featured": false,
+   "fields": [
+    {
+     "key": "personName",
+     "label": "الاسم",
+     "type": "text",
+     "required": true,
+     "placeholder": "الاسم الثلاثي"
+    },
+    {
+     "key": "achievement",
+     "label": "الإنجاز",
+     "type": "text",
+     "required": true,
+     "placeholder": "الفوز بالمركز الأول في ..."
+    },
+    {
+     "key": "text",
+     "label": "نص الرسالة",
+     "type": "textarea",
+     "presets": true,
+     "required": true
+    },
+    {
+     "key": "signature",
+     "label": "التوقيع",
+     "type": "text",
+     "placeholder": "أسرة آل دريهم"
+    }
+   ],
+   "defaults": {},
+   "slots": {
+    "eyebrow": "إنجاز نفخر به",
+    "title": "{{personName}}",
+    "subtitle": "{{achievement}}",
+    "body": "{{text}}",
+    "footer": "{{signature}}"
+   },
+   "presetGroup": "achievement",
+   "styles": [
+    {
+     "style": "premium",
+     "label": "فاخر",
+     "theme": "navy"
+    },
+    {
+     "style": "split",
+     "label": "حديث",
+     "theme": "teal"
+    },
+    {
+     "style": "family",
+     "label": "عائلي",
+     "theme": "light"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "recommended"
+  },
+  {
+   "id": "condolence",
+   "category": "condolences",
+   "name": "تعزية",
+   "description": "",
+   "status": "active",
+   "featured": false,
+   "fields": [
+    {
+     "key": "deceasedName",
+     "label": "اسم المتوفى",
+     "type": "text",
+     "required": true,
+     "placeholder": "الاسم الكامل"
+    },
+    {
+     "key": "relation",
+     "label": "صلة القرابة",
+     "type": "text",
+     "placeholder": "والد عبدالله وإخوانه"
+    },
+    {
+     "key": "gender",
+     "label": "الجنس",
+     "type": "select",
+     "options": [
+      "ذكر",
+      "أنثى"
+     ]
+    },
+    {
+     "key": "text",
+     "label": "نص الرسالة",
+     "type": "textarea",
+     "presets": true,
+     "required": true
+    },
+    {
+     "key": "signature",
+     "label": "التوقيع",
+     "type": "text",
+     "placeholder": "أسرة آل دريهم"
+    }
+   ],
+   "defaults": {
+    "gender": "ذكر"
+   },
+   "slots": {
+    "eyebrow": "تعزية",
+    "title": "{{deceasedName}}",
+    "subtitle": "[[{{relation}}]]",
+    "body": "{{text}}",
+    "footer": "{{signature}}"
+   },
+   "presetGroup": "condolence",
+   "styles": [
+    {
+     "style": "formal",
+     "label": "رسمي",
+     "theme": "navy"
+    },
+    {
+     "style": "minimal",
+     "label": "هادئ",
+     "theme": "light"
+    },
+    {
+     "style": "family",
+     "label": "بطاقة",
+     "theme": "light"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "none"
+  },
+  {
+   "id": "death-announce",
+   "category": "condolences",
+   "name": "إعلان وفاة",
+   "description": "",
+   "status": "active",
+   "featured": false,
+   "fields": [
+    {
+     "key": "deceasedName",
+     "label": "اسم المتوفى",
+     "type": "text",
+     "required": true,
+     "placeholder": "الاسم الكامل"
+    },
+    {
+     "key": "relation",
+     "label": "صلة القرابة",
+     "type": "text",
+     "placeholder": "والد عبدالله وإخوانه"
+    },
+    {
+     "key": "gender",
+     "label": "الجنس",
+     "type": "select",
+     "options": [
+      "ذكر",
+      "أنثى"
+     ]
+    },
+    {
+     "key": "text",
+     "label": "نص الرسالة",
+     "type": "textarea",
+     "presets": true,
+     "required": true
+    },
+    {
+     "key": "prayer",
+     "label": "الصلاة",
+     "type": "text",
+     "placeholder": "بعد صلاة العصر"
+    },
+    {
+     "key": "mosque",
+     "label": "الجامع",
+     "type": "text",
+     "placeholder": "جامع ..."
+    },
+    {
+     "key": "burial",
+     "label": "المقبرة",
+     "type": "text",
+     "placeholder": "اختياري"
+    }
+   ],
+   "defaults": {
+    "gender": "ذكر"
+   },
+   "slots": {
+    "eyebrow": "{{gender|g:انتقل إلى رحمة الله:انتقلت إلى رحمة الله}}",
+    "title": "{{deceasedName}}",
+    "subtitle": "[[{{relation}}]]",
+    "body": "{{text}}",
+    "details": [
+     {
+      "icon": "clock",
+      "label": "الصلاة عليه",
+      "value": "{{prayer}}[[ في {{mosque}}]]"
+     },
+     {
+      "icon": "pin",
+      "label": "الدفن",
+      "value": "{{burial}}"
+     }
+    ]
+   },
+   "presetGroup": "death",
+   "styles": [
+    {
+     "style": "formal",
+     "label": "رسمي",
+     "theme": "navy"
+    },
+    {
+     "style": "minimal",
+     "label": "هادئ",
+     "theme": "light"
+    },
+    {
+     "style": "family",
+     "label": "بطاقة",
+     "theme": "light"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "none"
+  },
+  {
+   "id": "funeral-details",
+   "category": "condolences",
+   "name": "تفاصيل الصلاة والعزاء",
+   "description": "",
+   "status": "active",
+   "featured": false,
+   "fields": [
+    {
+     "key": "deceasedName",
+     "label": "اسم المتوفى",
+     "type": "text",
+     "required": true,
+     "placeholder": "الاسم الكامل"
+    },
+    {
+     "key": "gender",
+     "label": "الجنس",
+     "type": "select",
+     "options": [
+      "ذكر",
+      "أنثى"
+     ]
+    },
+    {
+     "key": "prayer",
+     "label": "وقت الصلاة",
+     "type": "text",
+     "placeholder": "بعد صلاة العصر"
+    },
+    {
+     "key": "mosque",
+     "label": "مكان الصلاة",
+     "type": "text"
+    },
+    {
+     "key": "condolencePlace",
+     "label": "موقع العزاء",
+     "type": "text",
+     "placeholder": "منزل الأسرة بحي ..."
+    },
+    {
+     "key": "condolenceDays",
+     "label": "أيام العزاء",
+     "type": "text",
+     "placeholder": "ثلاثة أيام من ..."
+    },
+    {
+     "key": "condolenceTimes",
+     "label": "أوقات الاستقبال",
+     "type": "text",
+     "placeholder": "بعد العصر وبعد العشاء"
+    },
+    {
+     "key": "location",
+     "label": "رابط موقع العزاء",
+     "type": "url",
+     "qr": true
+    },
+    {
+     "key": "text",
+     "label": "نص الرسالة",
+     "type": "textarea",
+     "presets": true,
+     "required": true
+    }
+   ],
+   "defaults": {
+    "gender": "ذكر"
+   },
+   "slots": {
+    "eyebrow": "{{gender|g:المغفور له بإذن الله:المغفور لها بإذن الله}}",
+    "title": "{{deceasedName}}",
+    "body": "{{text}}",
+    "details": [
+     {
+      "icon": "clock",
+      "label": "الصلاة",
+      "value": "{{prayer}}[[ في {{mosque}}]]"
+     },
+     {
+      "icon": "pin",
+      "label": "العزاء",
+      "value": "{{condolencePlace}}"
+     },
+     {
+      "icon": "calendar",
+      "label": "الأيام",
+      "value": "{{condolenceDays}}"
+     },
+     {
+      "icon": "users",
+      "label": "الاستقبال",
+      "value": "{{condolenceTimes}}"
+     }
+    ],
+    "qr": "location",
+    "qrLabel": "موقع العزاء"
+   },
+   "presetGroup": "death",
+   "styles": [
+    {
+     "style": "formal",
+     "label": "رسمي",
+     "theme": "navy"
+    },
+    {
+     "style": "minimal",
+     "label": "هادئ",
+     "theme": "light"
+    },
+    {
+     "style": "family",
+     "label": "بطاقة",
+     "theme": "light"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "none"
+  },
+  {
+   "id": "family-meeting",
+   "category": "meetings",
+   "name": "دعوة اجتماع عائلي",
+   "description": "",
+   "status": "active",
+   "featured": true,
+   "fields": [
+    {
+     "key": "headline",
+     "label": "العنوان",
+     "type": "text",
+     "placeholder": "اجتماع الأسرة",
+     "required": true
+    },
+    {
+     "key": "text",
+     "label": "نص الرسالة",
+     "type": "textarea",
+     "presets": true,
+     "required": true
+    },
+    {
+     "key": "date",
+     "label": "التاريخ",
+     "type": "date",
+     "help": "يظهر تلقائياً باليوم والتاريخ الهجري والميلادي"
+    },
+    {
+     "key": "time",
+     "label": "الوقت",
+     "type": "text",
+     "placeholder": "مثال: ٨:٠٠ مساءً أو بعد صلاة العشاء"
+    },
+    {
+     "key": "venue",
+     "label": "المكان",
+     "type": "text",
+     "placeholder": "اسم القاعة أو الاستراحة"
+    },
+    {
+     "key": "city",
+     "label": "المدينة",
+     "type": "text",
+     "placeholder": "الرياض"
+    },
+    {
+     "key": "location",
+     "label": "رابط الموقع",
+     "type": "url",
+     "qr": true,
+     "placeholder": "https://maps.app.goo.gl/...",
+     "help": "يتحول تلقائياً إلى رمز QR داخل التصميم"
+    },
+    {
+     "key": "agenda",
+     "label": "محاور اللقاء",
+     "type": "textarea",
+     "placeholder": "اختياري، سطر لكل محور"
+    },
+    {
+     "key": "signature",
+     "label": "التوقيع",
+     "type": "text",
+     "placeholder": "أسرة آل دريهم"
+    }
+   ],
+   "defaults": {
+    "headline": "اجتماع الأسرة"
+   },
+   "slots": {
+    "eyebrow": "دعوة",
+    "title": "{{headline}}",
+    "body": "{{text}}",
+    "details": [
+     {
+      "icon": "calendar",
+      "label": "",
+      "value": "{{date|full}}[[\nالموافق {{date|gregorian}}]]"
+     },
+     {
+      "icon": "clock",
+      "label": "",
+      "value": "{{time}}"
+     },
+     {
+      "icon": "pin",
+      "label": "",
+      "value": "{{venue}}[[، {{city}}]]"
+     }
+    ],
+    "note": "{{agenda}}",
+    "qr": "location",
+    "qrLabel": "موقع الاجتماع",
+    "footer": "{{signature}}"
+   },
+   "presetGroup": "meeting",
+   "styles": [
+    {
+     "style": "family",
+     "label": "عائلي",
+     "theme": "light"
+    },
+    {
+     "style": "formal",
+     "label": "رسمي",
+     "theme": "navy"
+    },
+    {
+     "style": "split",
+     "label": "حديث",
+     "theme": "teal"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "optional"
+  },
+  {
+   "id": "meeting-reminder",
+   "category": "meetings",
+   "name": "تذكير باجتماع",
+   "description": "",
+   "status": "active",
+   "featured": false,
+   "fields": [
+    {
+     "key": "headline",
+     "label": "العنوان",
+     "type": "text",
+     "placeholder": "نلقاكم قريباً",
+     "required": true
+    },
+    {
+     "key": "text",
+     "label": "نص الرسالة",
+     "type": "textarea",
+     "presets": true,
+     "required": true
+    },
+    {
+     "key": "date",
+     "label": "التاريخ",
+     "type": "date",
+     "help": "يظهر تلقائياً باليوم والتاريخ الهجري والميلادي"
+    },
+    {
+     "key": "time",
+     "label": "الوقت",
+     "type": "text",
+     "placeholder": "مثال: ٨:٠٠ مساءً أو بعد صلاة العشاء"
+    },
+    {
+     "key": "venue",
+     "label": "المكان",
+     "type": "text",
+     "placeholder": "اسم القاعة أو الاستراحة"
+    },
+    {
+     "key": "location",
+     "label": "رابط الموقع",
+     "type": "url",
+     "qr": true,
+     "placeholder": "https://maps.app.goo.gl/...",
+     "help": "يتحول تلقائياً إلى رمز QR داخل التصميم"
+    }
+   ],
+   "defaults": {
+    "headline": "نلقاكم قريباً"
+   },
+   "slots": {
+    "eyebrow": "تذكير",
+    "title": "{{headline}}",
+    "body": "{{text}}",
+    "details": [
+     {
+      "icon": "calendar",
+      "label": "",
+      "value": "{{date|full}}[[\nالموافق {{date|gregorian}}]]"
+     },
+     {
+      "icon": "clock",
+      "label": "",
+      "value": "{{time}}"
+     },
+     {
+      "icon": "pin",
+      "label": "",
+      "value": "{{venue}}"
+     }
+    ],
+    "qr": "location",
+    "qrLabel": "الموقع"
+   },
+   "presetGroup": "meeting-reminder",
+   "styles": [
+    {
+     "style": "minimal",
+     "label": "بسيط",
+     "theme": "light"
+    },
+    {
+     "style": "formal",
+     "label": "رسمي",
+     "theme": "teal"
+    },
+    {
+     "style": "family",
+     "label": "عائلي",
+     "theme": "light"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "none"
+  },
+  {
+   "id": "council-meeting",
+   "category": "meetings",
+   "name": "إعلان اجتماع مجلس الأسرة",
+   "description": "",
+   "status": "active",
+   "featured": false,
+   "fields": [
+    {
+     "key": "meetingNo",
+     "label": "رقم أو اسم الاجتماع",
+     "type": "text",
+     "placeholder": "الاجتماع الدوري الثالث"
+    },
+    {
+     "key": "text",
+     "label": "نص الرسالة",
+     "type": "textarea",
+     "presets": true,
+     "required": true
+    },
+    {
+     "key": "date",
+     "label": "التاريخ",
+     "type": "date",
+     "help": "يظهر تلقائياً باليوم والتاريخ الهجري والميلادي"
+    },
+    {
+     "key": "time",
+     "label": "الوقت",
+     "type": "text",
+     "placeholder": "مثال: ٨:٠٠ مساءً أو بعد صلاة العشاء"
+    },
+    {
+     "key": "venue",
+     "label": "المكان",
+     "type": "text",
+     "placeholder": "اسم القاعة أو الاستراحة"
+    },
+    {
+     "key": "agenda",
+     "label": "جدول الأعمال",
+     "type": "textarea",
+     "placeholder": "سطر لكل بند"
+    },
+    {
+     "key": "location",
+     "label": "رابط الموقع",
+     "type": "url",
+     "qr": true,
+     "placeholder": "https://maps.app.goo.gl/...",
+     "help": "يتحول تلقائياً إلى رمز QR داخل التصميم"
+    }
+   ],
+   "defaults": {},
+   "slots": {
+    "eyebrow": "مجلس الأسرة",
+    "title": "اجتماع مجلس الأسرة",
+    "subtitle": "[[{{meetingNo}}]]",
+    "body": "{{text}}",
+    "details": [
+     {
+      "icon": "calendar",
+      "label": "",
+      "value": "{{date|full}}[[\nالموافق {{date|gregorian}}]]"
+     },
+     {
+      "icon": "clock",
+      "label": "",
+      "value": "{{time}}"
+     },
+     {
+      "icon": "pin",
+      "label": "",
+      "value": "{{venue}}"
+     }
+    ],
+    "note": "[[جدول الأعمال:\n{{agenda}}]]",
+    "qr": "location",
+    "qrLabel": "الموقع"
+   },
+   "presetGroup": "council",
+   "styles": [
+    {
+     "style": "formal",
+     "label": "رسمي",
+     "theme": "navy"
+    },
+    {
+     "style": "minimal",
+     "label": "بسيط",
+     "theme": "light"
+    },
+    {
+     "style": "split",
+     "label": "حديث",
+     "theme": "navy"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "none"
+  },
+  {
+   "id": "family-occasion",
+   "category": "family",
+   "name": "دعوة مناسبة عائلية",
+   "description": "",
+   "status": "active",
+   "featured": false,
+   "fields": [
+    {
+     "key": "occasionName",
+     "label": "المناسبة",
+     "type": "text",
+     "required": true,
+     "placeholder": "حفل تكريم / عشاء عائلي"
+    },
+    {
+     "key": "text",
+     "label": "نص الرسالة",
+     "type": "textarea",
+     "presets": true,
+     "required": true
+    },
+    {
+     "key": "date",
+     "label": "التاريخ",
+     "type": "date",
+     "help": "يظهر تلقائياً باليوم والتاريخ الهجري والميلادي"
+    },
+    {
+     "key": "time",
+     "label": "الوقت",
+     "type": "text",
+     "placeholder": "مثال: ٨:٠٠ مساءً أو بعد صلاة العشاء"
+    },
+    {
+     "key": "venue",
+     "label": "المكان",
+     "type": "text",
+     "placeholder": "اسم القاعة أو الاستراحة"
+    },
+    {
+     "key": "city",
+     "label": "المدينة",
+     "type": "text",
+     "placeholder": "الرياض"
+    },
+    {
+     "key": "location",
+     "label": "رابط الموقع",
+     "type": "url",
+     "qr": true,
+     "placeholder": "https://maps.app.goo.gl/...",
+     "help": "يتحول تلقائياً إلى رمز QR داخل التصميم"
+    },
+    {
+     "key": "host",
+     "label": "الداعي",
+     "type": "text",
+     "placeholder": "أسرة آل دريهم"
+    }
+   ],
+   "defaults": {},
+   "slots": {
+    "eyebrow": "دعوة",
+    "title": "{{occasionName}}",
+    "body": "{{text}}",
+    "details": [
+     {
+      "icon": "calendar",
+      "label": "",
+      "value": "{{date|full}}[[\nالموافق {{date|gregorian}}]]"
+     },
+     {
+      "icon": "clock",
+      "label": "",
+      "value": "{{time}}"
+     },
+     {
+      "icon": "pin",
+      "label": "",
+      "value": "{{venue}}[[، {{city}}]]"
+     }
+    ],
+    "qr": "location",
+    "qrLabel": "موقع المناسبة",
+    "footer": "[[{{host}}]]"
+   },
+   "presetGroup": "invite",
+   "styles": [
+    {
+     "style": "family",
+     "label": "عائلي",
+     "theme": "light"
+    },
+    {
+     "style": "premium",
+     "label": "فاخر",
+     "theme": "navy"
+    },
+    {
+     "style": "minimal",
+     "label": "بسيط",
+     "theme": "light"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "optional"
+  },
+  {
+   "id": "course",
+   "category": "programs",
+   "name": "دورة تدريبية",
+   "description": "",
+   "status": "active",
+   "featured": false,
+   "fields": [
+    {
+     "key": "title",
+     "label": "العنوان",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "presenter",
+     "label": "المدرب",
+     "type": "text"
+    },
+    {
+     "key": "text",
+     "label": "نبذة",
+     "type": "textarea",
+     "presets": true
+    },
+    {
+     "key": "date",
+     "label": "التاريخ",
+     "type": "date",
+     "help": "يظهر تلقائياً باليوم والتاريخ الهجري والميلادي"
+    },
+    {
+     "key": "time",
+     "label": "الوقت",
+     "type": "text",
+     "placeholder": "مثال: ٨:٠٠ مساءً أو بعد صلاة العشاء"
+    },
+    {
+     "key": "duration",
+     "label": "المدة",
+     "type": "text",
+     "placeholder": "ثلاثة أيام / ساعتان"
+    },
+    {
+     "key": "venue",
+     "label": "المكان",
+     "type": "text",
+     "placeholder": "القاعة أو: عن بُعد"
+    },
+    {
+     "key": "audience",
+     "label": "الفئة المستهدفة",
+     "type": "text",
+     "placeholder": "الشباب من ١٥ إلى ٢٥ سنة"
+    },
+    {
+     "key": "link",
+     "label": "رابط (تسجيل أو موقع أو واتساب)",
+     "type": "url",
+     "qr": true,
+     "placeholder": "https://..."
+    }
+   ],
+   "defaults": {},
+   "slots": {
+    "eyebrow": "دورة تدريبية",
+    "title": "{{title}}",
+    "subtitle": "[[يقدمها {{presenter}}]]",
+    "body": "{{text}}",
+    "details": [
+     {
+      "icon": "calendar",
+      "label": "",
+      "value": "{{date|full}}[[\nالموافق {{date|gregorian}}]]"
+     },
+     {
+      "icon": "clock",
+      "label": "",
+      "value": "{{time}}"
+     },
+     {
+      "icon": "clock",
+      "label": "المدة",
+      "value": "{{duration}}"
+     },
+     {
+      "icon": "pin",
+      "label": "",
+      "value": "{{venue}}"
+     },
+     {
+      "icon": "users",
+      "label": "الفئة",
+      "value": "{{audience}}"
+     }
+    ],
+    "qr": "link",
+    "qrLabel": "للتسجيل امسح الرمز"
+   },
+   "presetGroup": "course",
+   "styles": [
+    {
+     "style": "split",
+     "label": "حديث",
+     "theme": "navy"
+    },
+    {
+     "style": "minimal",
+     "label": "بسيط",
+     "theme": "light"
+    },
+    {
+     "style": "photo",
+     "label": "بالصورة",
+     "theme": "navy"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "recommended"
+  },
+  {
+   "id": "workshop",
+   "category": "programs",
+   "name": "ورشة عمل",
+   "description": "",
+   "status": "active",
+   "featured": false,
+   "fields": [
+    {
+     "key": "title",
+     "label": "العنوان",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "presenter",
+     "label": "مقدم الورشة",
+     "type": "text"
+    },
+    {
+     "key": "text",
+     "label": "نبذة",
+     "type": "textarea",
+     "presets": true
+    },
+    {
+     "key": "date",
+     "label": "التاريخ",
+     "type": "date",
+     "help": "يظهر تلقائياً باليوم والتاريخ الهجري والميلادي"
+    },
+    {
+     "key": "time",
+     "label": "الوقت",
+     "type": "text",
+     "placeholder": "مثال: ٨:٠٠ مساءً أو بعد صلاة العشاء"
+    },
+    {
+     "key": "duration",
+     "label": "المدة",
+     "type": "text",
+     "placeholder": "ثلاثة أيام / ساعتان"
+    },
+    {
+     "key": "venue",
+     "label": "المكان",
+     "type": "text",
+     "placeholder": "القاعة أو: عن بُعد"
+    },
+    {
+     "key": "audience",
+     "label": "الفئة المستهدفة",
+     "type": "text",
+     "placeholder": "الشباب من ١٥ إلى ٢٥ سنة"
+    },
+    {
+     "key": "link",
+     "label": "رابط (تسجيل أو موقع أو واتساب)",
+     "type": "url",
+     "qr": true,
+     "placeholder": "https://..."
+    }
+   ],
+   "defaults": {},
+   "slots": {
+    "eyebrow": "ورشة عمل",
+    "title": "{{title}}",
+    "subtitle": "[[يقدمها {{presenter}}]]",
+    "body": "{{text}}",
+    "details": [
+     {
+      "icon": "calendar",
+      "label": "",
+      "value": "{{date|full}}[[\nالموافق {{date|gregorian}}]]"
+     },
+     {
+      "icon": "clock",
+      "label": "",
+      "value": "{{time}}"
+     },
+     {
+      "icon": "clock",
+      "label": "المدة",
+      "value": "{{duration}}"
+     },
+     {
+      "icon": "pin",
+      "label": "",
+      "value": "{{venue}}"
+     },
+     {
+      "icon": "users",
+      "label": "الفئة",
+      "value": "{{audience}}"
+     }
+    ],
+    "qr": "link",
+    "qrLabel": "للتسجيل امسح الرمز"
+   },
+   "presetGroup": "course",
+   "styles": [
+    {
+     "style": "split",
+     "label": "حديث",
+     "theme": "navy"
+    },
+    {
+     "style": "minimal",
+     "label": "بسيط",
+     "theme": "light"
+    },
+    {
+     "style": "photo",
+     "label": "بالصورة",
+     "theme": "navy"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "recommended"
+  },
+  {
+   "id": "talk",
+   "category": "programs",
+   "name": "لقاء",
+   "description": "",
+   "status": "active",
+   "featured": false,
+   "fields": [
+    {
+     "key": "title",
+     "label": "عنوان اللقاء",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "guest",
+     "label": "الضيف",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "guestTitle",
+     "label": "صفة الضيف",
+     "type": "text",
+     "placeholder": "مستشار أسري"
+    },
+    {
+     "key": "text",
+     "label": "نبذة",
+     "type": "textarea",
+     "presets": true
+    },
+    {
+     "key": "date",
+     "label": "التاريخ",
+     "type": "date",
+     "help": "يظهر تلقائياً باليوم والتاريخ الهجري والميلادي"
+    },
+    {
+     "key": "time",
+     "label": "الوقت",
+     "type": "text",
+     "placeholder": "مثال: ٨:٠٠ مساءً أو بعد صلاة العشاء"
+    },
+    {
+     "key": "venue",
+     "label": "المكان",
+     "type": "text",
+     "placeholder": "القاعة أو: عن بُعد"
+    },
+    {
+     "key": "link",
+     "label": "رابط (تسجيل أو موقع أو واتساب)",
+     "type": "url",
+     "qr": true,
+     "placeholder": "https://..."
+    }
+   ],
+   "defaults": {},
+   "slots": {
+    "eyebrow": "لقاء",
+    "title": "{{title}}",
+    "subtitle": "مع {{guest}}[[، {{guestTitle}}]]",
+    "body": "{{text}}",
+    "details": [
+     {
+      "icon": "calendar",
+      "label": "",
+      "value": "{{date|full}}[[\nالموافق {{date|gregorian}}]]"
+     },
+     {
+      "icon": "clock",
+      "label": "",
+      "value": "{{time}}"
+     },
+     {
+      "icon": "pin",
+      "label": "",
+      "value": "{{venue}}"
+     }
+    ],
+    "qr": "link",
+    "qrLabel": "رابط اللقاء أو التسجيل"
+   },
+   "presetGroup": "course",
+   "styles": [
+    {
+     "style": "split",
+     "label": "حديث",
+     "theme": "navy"
+    },
+    {
+     "style": "photo",
+     "label": "بالصورة",
+     "theme": "navy"
+    },
+    {
+     "style": "formal",
+     "label": "رسمي",
+     "theme": "teal"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "recommended"
+  },
+  {
+   "id": "trip",
+   "category": "events",
+   "name": "رحلة",
+   "description": "",
+   "status": "active",
+   "featured": true,
+   "fields": [
+    {
+     "key": "destination",
+     "label": "الوجهة",
+     "type": "text",
+     "required": true,
+     "placeholder": "العلا"
+    },
+    {
+     "key": "title",
+     "label": "عنوان الرحلة",
+     "type": "text",
+     "placeholder": "رحلة الأسرة الشتوية"
+    },
+    {
+     "key": "text",
+     "label": "نبذة",
+     "type": "textarea",
+     "presets": true
+    },
+    {
+     "key": "date",
+     "label": "التاريخ",
+     "type": "date",
+     "help": "يظهر تلقائياً باليوم والتاريخ الهجري والميلادي"
+    },
+    {
+     "key": "meetingPoint",
+     "label": "نقطة التجمع",
+     "type": "text"
+    },
+    {
+     "key": "time",
+     "label": "الوقت",
+     "type": "text",
+     "placeholder": "مثال: ٨:٠٠ مساءً أو بعد صلاة العشاء"
+    },
+    {
+     "key": "fee",
+     "label": "الاشتراك",
+     "type": "text",
+     "placeholder": "اختياري"
+    },
+    {
+     "key": "link",
+     "label": "رابط (تسجيل أو موقع أو واتساب)",
+     "type": "url",
+     "qr": true,
+     "placeholder": "https://..."
+    }
+   ],
+   "defaults": {},
+   "slots": {
+    "eyebrow": "[[{{title}}]]",
+    "title": "رحلة إلى {{destination}}",
+    "body": "{{text}}",
+    "details": [
+     {
+      "icon": "calendar",
+      "label": "",
+      "value": "{{date|full}}[[\nالموافق {{date|gregorian}}]]"
+     },
+     {
+      "icon": "pin",
+      "label": "التجمع",
+      "value": "{{meetingPoint}}"
+     },
+     {
+      "icon": "clock",
+      "label": "",
+      "value": "{{time}}"
+     },
+     {
+      "icon": "info",
+      "label": "الاشتراك",
+      "value": "{{fee}}"
+     }
+    ],
+    "qr": "link",
+    "qrLabel": "للتسجيل"
+   },
+   "presetGroup": "trip",
+   "styles": [
+    {
+     "style": "photo",
+     "label": "بالصورة",
+     "theme": "navy"
+    },
+    {
+     "style": "split",
+     "label": "حديث",
+     "theme": "teal"
+    },
+    {
+     "style": "formal",
+     "label": "رسمي",
+     "theme": "navy"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "recommended"
+  },
+  {
+   "id": "tournament",
+   "category": "events",
+   "name": "بطولة أو فعالية رياضية",
+   "description": "",
+   "status": "active",
+   "featured": false,
+   "fields": [
+    {
+     "key": "title",
+     "label": "اسم البطولة",
+     "type": "text",
+     "required": true,
+     "placeholder": "بطولة الأسرة لكرة القدم"
+    },
+    {
+     "key": "sport",
+     "label": "الرياضة",
+     "type": "text",
+     "placeholder": "كرة القدم"
+    },
+    {
+     "key": "text",
+     "label": "نبذة",
+     "type": "textarea",
+     "presets": true
+    },
+    {
+     "key": "date",
+     "label": "التاريخ",
+     "type": "date",
+     "help": "يظهر تلقائياً باليوم والتاريخ الهجري والميلادي"
+    },
+    {
+     "key": "time",
+     "label": "الوقت",
+     "type": "text",
+     "placeholder": "مثال: ٨:٠٠ مساءً أو بعد صلاة العشاء"
+    },
+    {
+     "key": "venue",
+     "label": "المكان",
+     "type": "text",
+     "placeholder": "اسم القاعة أو الاستراحة"
+    },
+    {
+     "key": "prizes",
+     "label": "الجوائز",
+     "type": "text",
+     "placeholder": "اختياري"
+    },
+    {
+     "key": "link",
+     "label": "رابط (تسجيل أو موقع أو واتساب)",
+     "type": "url",
+     "qr": true,
+     "placeholder": "https://..."
+    }
+   ],
+   "defaults": {},
+   "slots": {
+    "eyebrow": "[[{{sport}}]]",
+    "title": "{{title}}",
+    "body": "{{text}}",
+    "details": [
+     {
+      "icon": "calendar",
+      "label": "",
+      "value": "{{date|full}}[[\nالموافق {{date|gregorian}}]]"
+     },
+     {
+      "icon": "clock",
+      "label": "",
+      "value": "{{time}}"
+     },
+     {
+      "icon": "pin",
+      "label": "",
+      "value": "{{venue}}"
+     },
+     {
+      "icon": "star",
+      "label": "الجوائز",
+      "value": "{{prizes}}"
+     }
+    ],
+    "qr": "link",
+    "qrLabel": "سجّل فريقك"
+   },
+   "presetGroup": "event",
+   "styles": [
+    {
+     "style": "photo",
+     "label": "بالصورة",
+     "theme": "navy"
+    },
+    {
+     "style": "split",
+     "label": "حديث",
+     "theme": "teal"
+    },
+    {
+     "style": "formal",
+     "label": "رسمي",
+     "theme": "navy"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "recommended"
+  },
+  {
+   "id": "competition",
+   "category": "events",
+   "name": "مسابقة",
+   "description": "",
+   "status": "active",
+   "featured": false,
+   "fields": [
+    {
+     "key": "title",
+     "label": "اسم المسابقة",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "text",
+     "label": "فكرة المسابقة",
+     "type": "textarea",
+     "presets": true
+    },
+    {
+     "key": "date",
+     "label": "آخر موعد للمشاركة",
+     "type": "date"
+    },
+    {
+     "key": "prizes",
+     "label": "الجوائز",
+     "type": "text"
+    },
+    {
+     "key": "terms",
+     "label": "الشروط",
+     "type": "textarea",
+     "placeholder": "اختياري"
+    },
+    {
+     "key": "link",
+     "label": "رابط (تسجيل أو موقع أو واتساب)",
+     "type": "url",
+     "qr": true,
+     "placeholder": "https://..."
+    }
+   ],
+   "defaults": {},
+   "slots": {
+    "eyebrow": "مسابقة",
+    "title": "{{title}}",
+    "body": "{{text}}",
+    "details": [
+     {
+      "icon": "calendar",
+      "label": "آخر موعد",
+      "value": "{{date|full}}"
+     },
+     {
+      "icon": "star",
+      "label": "الجوائز",
+      "value": "{{prizes}}"
+     }
+    ],
+    "note": "{{terms}}",
+    "qr": "link",
+    "qrLabel": "للمشاركة"
+   },
+   "presetGroup": "event",
+   "styles": [
+    {
+     "style": "split",
+     "label": "حديث",
+     "theme": "navy"
+    },
+    {
+     "style": "family",
+     "label": "عائلي",
+     "theme": "light"
+    },
+    {
+     "style": "premium",
+     "label": "فاخر",
+     "theme": "teal"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "optional"
+  },
+  {
+   "id": "announcement",
+   "category": "announcements",
+   "name": "إعلان عام",
+   "description": "",
+   "status": "active",
+   "featured": false,
+   "fields": [
+    {
+     "key": "headline",
+     "label": "العنوان",
+     "type": "text",
+     "placeholder": "إعلان",
+     "required": true
+    },
+    {
+     "key": "text",
+     "label": "نص الرسالة",
+     "type": "textarea",
+     "presets": true,
+     "required": true
+    },
+    {
+     "key": "date",
+     "label": "التاريخ",
+     "type": "date",
+     "help": "يظهر تلقائياً باليوم والتاريخ الهجري والميلادي"
+    },
+    {
+     "key": "link",
+     "label": "رابط (تسجيل أو موقع أو واتساب)",
+     "type": "url",
+     "qr": true,
+     "placeholder": "https://..."
+    },
+    {
+     "key": "signature",
+     "label": "التوقيع",
+     "type": "text",
+     "placeholder": "أسرة آل دريهم"
+    }
+   ],
+   "defaults": {},
+   "slots": {
+    "eyebrow": "إعلان",
+    "title": "{{headline}}",
+    "body": "{{text}}",
+    "details": [
+     {
+      "icon": "calendar",
+      "label": "",
+      "value": "{{date|full}}"
+     }
+    ],
+    "qr": "link",
+    "qrLabel": "لمزيد من التفاصيل",
+    "footer": "{{signature}}"
+   },
+   "presetGroup": "announcement",
+   "styles": [
+    {
+     "style": "minimal",
+     "label": "بسيط",
+     "theme": "light"
+    },
+    {
+     "style": "split",
+     "label": "حديث",
+     "theme": "navy"
+    },
+    {
+     "style": "formal",
+     "label": "رسمي",
+     "theme": "navy"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "optional"
+  },
+  {
+   "id": "alert",
+   "category": "announcements",
+   "name": "تنبيه",
+   "description": "",
+   "status": "active",
+   "featured": false,
+   "fields": [
+    {
+     "key": "headline",
+     "label": "العنوان",
+     "type": "text",
+     "placeholder": "تنبيه مهم",
+     "required": true
+    },
+    {
+     "key": "text",
+     "label": "نص الرسالة",
+     "type": "textarea",
+     "presets": true,
+     "required": true
+    },
+    {
+     "key": "signature",
+     "label": "التوقيع",
+     "type": "text",
+     "placeholder": "أسرة آل دريهم"
+    }
+   ],
+   "defaults": {
+    "headline": "تنبيه مهم"
+   },
+   "slots": {
+    "eyebrow": "تنبيه",
+    "title": "{{headline}}",
+    "body": "{{text}}",
+    "footer": "{{signature}}"
+   },
+   "presetGroup": "alert",
+   "styles": [
+    {
+     "style": "formal",
+     "label": "رسمي",
+     "theme": "teal"
+    },
+    {
+     "style": "minimal",
+     "label": "بسيط",
+     "theme": "light"
+    },
+    {
+     "style": "premium",
+     "label": "واضح",
+     "theme": "navy"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "none"
+  },
+  {
+   "id": "news",
+   "category": "announcements",
+   "name": "خبر",
+   "description": "",
+   "status": "active",
+   "featured": false,
+   "fields": [
+    {
+     "key": "headline",
+     "label": "العنوان",
+     "type": "text",
+     "placeholder": "عنوان الخبر",
+     "required": true
+    },
+    {
+     "key": "text",
+     "label": "نص الرسالة",
+     "type": "textarea",
+     "presets": true,
+     "required": true
+    },
+    {
+     "key": "date",
+     "label": "التاريخ",
+     "type": "date",
+     "help": "يظهر تلقائياً باليوم والتاريخ الهجري والميلادي"
+    },
+    {
+     "key": "link",
+     "label": "رابط (تسجيل أو موقع أو واتساب)",
+     "type": "url",
+     "qr": true,
+     "placeholder": "https://..."
+    }
+   ],
+   "defaults": {},
+   "slots": {
+    "eyebrow": "أخبار الأسرة",
+    "title": "{{headline}}",
+    "body": "{{text}}",
+    "details": [
+     {
+      "icon": "calendar",
+      "label": "",
+      "value": "{{date|full}}"
+     }
+    ],
+    "qr": "link",
+    "qrLabel": "التفاصيل"
+   },
+   "presetGroup": "news",
+   "styles": [
+    {
+     "style": "split",
+     "label": "حديث",
+     "theme": "navy"
+    },
+    {
+     "style": "photo",
+     "label": "بالصورة",
+     "theme": "navy"
+    },
+    {
+     "style": "minimal",
+     "label": "بسيط",
+     "theme": "light"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "recommended"
+  },
+  {
+   "id": "appreciation",
+   "category": "greetings",
+   "name": "شكر وتقدير",
+   "description": "",
+   "status": "active",
+   "featured": false,
+   "fields": [
+    {
+     "key": "personName",
+     "label": "الاسم",
+     "type": "text",
+     "required": true,
+     "placeholder": "الاسم الثلاثي"
+    },
+    {
+     "key": "reason",
+     "label": "سبب الشكر",
+     "type": "text",
+     "placeholder": "على جهوده في تنظيم اجتماع الأسرة"
+    },
+    {
+     "key": "text",
+     "label": "نص الرسالة",
+     "type": "textarea",
+     "presets": true,
+     "required": true
+    },
+    {
+     "key": "signature",
+     "label": "التوقيع",
+     "type": "text",
+     "placeholder": "أسرة آل دريهم"
+    }
+   ],
+   "defaults": {},
+   "slots": {
+    "eyebrow": "شكر وتقدير",
+    "title": "{{personName}}",
+    "subtitle": "[[{{reason}}]]",
+    "body": "{{text}}",
+    "footer": "{{signature}}"
+   },
+   "presetGroup": "appreciation",
+   "styles": [
+    {
+     "style": "premium",
+     "label": "فاخر",
+     "theme": "navy"
+    },
+    {
+     "style": "minimal",
+     "label": "بسيط",
+     "theme": "light"
+    },
+    {
+     "style": "formal",
+     "label": "رسمي",
+     "theme": "teal"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "optional"
+  },
+  {
+   "id": "general-congrats",
+   "category": "greetings",
+   "name": "تهنئة عامة",
+   "description": "",
+   "status": "active",
+   "featured": false,
+   "fields": [
+    {
+     "key": "personName",
+     "label": "الاسم",
+     "type": "text",
+     "required": true,
+     "placeholder": "الاسم الثلاثي"
+    },
+    {
+     "key": "occasion",
+     "label": "المناسبة",
+     "type": "text",
+     "placeholder": "بمناسبة ..."
+    },
+    {
+     "key": "text",
+     "label": "نص الرسالة",
+     "type": "textarea",
+     "presets": true,
+     "required": true
+    },
+    {
+     "key": "signature",
+     "label": "التوقيع",
+     "type": "text",
+     "placeholder": "أسرة آل دريهم"
+    }
+   ],
+   "defaults": {},
+   "slots": {
+    "eyebrow": "تهنئة",
+    "title": "{{personName}}",
+    "subtitle": "[[{{occasion}}]]",
+    "body": "{{text}}",
+    "footer": "{{signature}}"
+   },
+   "presetGroup": "congrats",
+   "styles": [
+    {
+     "style": "family",
+     "label": "عائلي",
+     "theme": "light"
+    },
+    {
+     "style": "premium",
+     "label": "فاخر",
+     "theme": "teal"
+    },
+    {
+     "style": "minimal",
+     "label": "بسيط",
+     "theme": "light"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "optional"
+  },
+  {
+   "id": "fund-announcement",
+   "category": "fund",
+   "name": "إعلان صندوق أواصر",
+   "description": "",
+   "status": "active",
+   "featured": false,
+   "fields": [
+    {
+     "key": "headline",
+     "label": "العنوان",
+     "type": "text",
+     "placeholder": "إعلان",
+     "required": true
+    },
+    {
+     "key": "text",
+     "label": "نص الرسالة",
+     "type": "textarea",
+     "presets": true,
+     "required": true
+    },
+    {
+     "key": "date",
+     "label": "التاريخ",
+     "type": "date",
+     "help": "يظهر تلقائياً باليوم والتاريخ الهجري والميلادي"
+    },
+    {
+     "key": "link",
+     "label": "رابط (تسجيل أو موقع أو واتساب)",
+     "type": "url",
+     "qr": true,
+     "placeholder": "https://..."
+    },
+    {
+     "key": "signature",
+     "label": "التوقيع",
+     "type": "text",
+     "placeholder": "أسرة آل دريهم"
+    }
+   ],
+   "defaults": {
+    "signature": "صندوق أواصر"
+   },
+   "slots": {
+    "eyebrow": "صندوق أواصر",
+    "title": "{{headline}}",
+    "body": "{{text}}",
+    "details": [
+     {
+      "icon": "calendar",
+      "label": "",
+      "value": "{{date|full}}"
+     }
+    ],
+    "qr": "link",
+    "qrLabel": "التفاصيل",
+    "footer": "{{signature}}"
+   },
+   "presetGroup": "fund",
+   "styles": [
+    {
+     "style": "formal",
+     "label": "رسمي",
+     "theme": "navy"
+    },
+    {
+     "style": "split",
+     "label": "حديث",
+     "theme": "teal"
+    },
+    {
+     "style": "minimal",
+     "label": "بسيط",
+     "theme": "light"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "none"
+  },
+  {
+   "id": "contributions-reminder",
+   "category": "fund",
+   "name": "تذكير بالمساهمات",
+   "description": "",
+   "status": "active",
+   "featured": false,
+   "fields": [
+    {
+     "key": "period",
+     "label": "الفترة",
+     "type": "text",
+     "placeholder": "الربع الثالث ١٤٤٨هـ"
+    },
+    {
+     "key": "text",
+     "label": "نص الرسالة",
+     "type": "textarea",
+     "presets": true,
+     "required": true
+    },
+    {
+     "key": "date",
+     "label": "آخر موعد",
+     "type": "date"
+    },
+    {
+     "key": "method",
+     "label": "طريقة المساهمة",
+     "type": "textarea",
+     "placeholder": "التحويل إلى حساب الصندوق المعتمد"
+    },
+    {
+     "key": "link",
+     "label": "رابط (تسجيل أو موقع أو واتساب)",
+     "type": "url",
+     "qr": true,
+     "placeholder": "https://..."
+    },
+    {
+     "key": "signature",
+     "label": "التوقيع",
+     "type": "text",
+     "placeholder": "أسرة آل دريهم"
+    }
+   ],
+   "defaults": {
+    "signature": "صندوق أواصر"
+   },
+   "slots": {
+    "eyebrow": "تذكير",
+    "title": "موعد المساهمة",
+    "subtitle": "[[{{period}}]]",
+    "body": "{{text}}",
+    "details": [
+     {
+      "icon": "calendar",
+      "label": "آخر موعد",
+      "value": "{{date|full}}"
+     }
+    ],
+    "note": "{{method}}",
+    "qr": "link",
+    "qrLabel": "للتفاصيل",
+    "footer": "{{signature}}"
+   },
+   "presetGroup": "contributions",
+   "styles": [
+    {
+     "style": "minimal",
+     "label": "بسيط",
+     "theme": "light"
+    },
+    {
+     "style": "formal",
+     "label": "رسمي",
+     "theme": "navy"
+    },
+    {
+     "style": "family",
+     "label": "عائلي",
+     "theme": "light"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "none"
+  },
+  {
+   "id": "fund-report",
+   "category": "fund",
+   "name": "تقرير مختصر أو نتيجة مالية",
+   "description": "",
+   "status": "active",
+   "featured": false,
+   "fields": [
+    {
+     "key": "period",
+     "label": "الفترة",
+     "type": "text",
+     "required": true,
+     "placeholder": "الربع الثالث ٢٠٢٦"
+    },
+    {
+     "key": "s1l",
+     "label": "المؤشر الأول",
+     "type": "text",
+     "placeholder": "إجمالي المساهمات"
+    },
+    {
+     "key": "s1",
+     "label": "قيمته",
+     "type": "text",
+     "placeholder": "٤٥٬٠٠٠ ر.س"
+    },
+    {
+     "key": "s2l",
+     "label": "المؤشر الثاني",
+     "type": "text",
+     "placeholder": "عدد المساهمين"
+    },
+    {
+     "key": "s2",
+     "label": "قيمته",
+     "type": "text",
+     "placeholder": "١٢"
+    },
+    {
+     "key": "s3l",
+     "label": "المؤشر الثالث",
+     "type": "text",
+     "placeholder": "المبلغ المستثمر"
+    },
+    {
+     "key": "s3",
+     "label": "قيمته",
+     "type": "text"
+    },
+    {
+     "key": "s4l",
+     "label": "المؤشر الرابع",
+     "type": "text",
+     "placeholder": "العائد"
+    },
+    {
+     "key": "s4",
+     "label": "قيمته",
+     "type": "text"
+    },
+    {
+     "key": "text",
+     "label": "تعليق مختصر",
+     "type": "textarea",
+     "presets": true
+    },
+    {
+     "key": "signature",
+     "label": "التوقيع",
+     "type": "text",
+     "placeholder": "أسرة آل دريهم"
+    }
+   ],
+   "defaults": {
+    "signature": "صندوق أواصر",
+    "s1l": "إجمالي المساهمات",
+    "s2l": "عدد المساهمين",
+    "s3l": "المبلغ المستثمر",
+    "s4l": "العائد"
+   },
+   "slots": {
+    "eyebrow": "صندوق أواصر",
+    "title": "ملخص {{period}}",
+    "body": "{{text}}",
+    "stats": [
+     {
+      "label": "{{s1l}}",
+      "value": "{{s1}}"
+     },
+     {
+      "label": "{{s2l}}",
+      "value": "{{s2}}"
+     },
+     {
+      "label": "{{s3l}}",
+      "value": "{{s3}}"
+     },
+     {
+      "label": "{{s4l}}",
+      "value": "{{s4}}"
+     }
+    ],
+    "footer": "{{signature}}"
+   },
+   "presetGroup": "fund-report",
+   "styles": [
+    {
+     "style": "formal",
+     "label": "رسمي",
+     "theme": "navy"
+    },
+    {
+     "style": "minimal",
+     "label": "بسيط",
+     "theme": "light"
+    },
+    {
+     "style": "split",
+     "label": "حديث",
+     "theme": "navy"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "none"
+  },
+  {
+   "id": "fund-meeting",
+   "category": "fund",
+   "name": "إعلان موعد أو اجتماع للصندوق",
+   "description": "",
+   "status": "active",
+   "featured": false,
+   "fields": [
+    {
+     "key": "headline",
+     "label": "العنوان",
+     "type": "text",
+     "placeholder": "اجتماع المساهمين",
+     "required": true
+    },
+    {
+     "key": "text",
+     "label": "نص الرسالة",
+     "type": "textarea",
+     "presets": true,
+     "required": true
+    },
+    {
+     "key": "date",
+     "label": "التاريخ",
+     "type": "date",
+     "help": "يظهر تلقائياً باليوم والتاريخ الهجري والميلادي"
+    },
+    {
+     "key": "time",
+     "label": "الوقت",
+     "type": "text",
+     "placeholder": "مثال: ٨:٠٠ مساءً أو بعد صلاة العشاء"
+    },
+    {
+     "key": "venue",
+     "label": "المكان",
+     "type": "text",
+     "placeholder": "القاعة أو: عن بُعد"
+    },
+    {
+     "key": "agenda",
+     "label": "جدول الأعمال",
+     "type": "textarea"
+    },
+    {
+     "key": "link",
+     "label": "رابط (تسجيل أو موقع أو واتساب)",
+     "type": "url",
+     "qr": true,
+     "placeholder": "https://..."
+    },
+    {
+     "key": "signature",
+     "label": "التوقيع",
+     "type": "text",
+     "placeholder": "أسرة آل دريهم"
+    }
+   ],
+   "defaults": {
+    "signature": "صندوق أواصر",
+    "headline": "اجتماع المساهمين"
+   },
+   "slots": {
+    "eyebrow": "صندوق أواصر",
+    "title": "{{headline}}",
+    "body": "{{text}}",
+    "details": [
+     {
+      "icon": "calendar",
+      "label": "",
+      "value": "{{date|full}}[[\nالموافق {{date|gregorian}}]]"
+     },
+     {
+      "icon": "clock",
+      "label": "",
+      "value": "{{time}}"
+     },
+     {
+      "icon": "pin",
+      "label": "",
+      "value": "{{venue}}"
+     }
+    ],
+    "note": "[[جدول الأعمال:\n{{agenda}}]]",
+    "qr": "link",
+    "qrLabel": "رابط الاجتماع",
+    "footer": "{{signature}}"
+   },
+   "presetGroup": "fund",
+   "styles": [
+    {
+     "style": "formal",
+     "label": "رسمي",
+     "theme": "navy"
+    },
+    {
+     "style": "split",
+     "label": "حديث",
+     "theme": "teal"
+    },
+    {
+     "style": "minimal",
+     "label": "بسيط",
+     "theme": "light"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "none"
+  },
+  {
+   "id": "free-design",
+   "category": "general",
+   "name": "تصميم عام",
+   "description": "عنوان ونص وصورة اختيارية، بدون ارتباط بمناسبة",
+   "status": "active",
+   "featured": true,
+   "fields": [
+    {
+     "key": "headline",
+     "label": "العنوان",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "text",
+     "label": "النص",
+     "type": "textarea",
+     "presets": true
+    },
+    {
+     "key": "date",
+     "label": "التاريخ",
+     "type": "date"
+    },
+    {
+     "key": "buttonText",
+     "label": "نص الزر أو الرابط",
+     "type": "text",
+     "placeholder": "سجّل الآن"
+    },
+    {
+     "key": "link",
+     "label": "رابط (تسجيل أو موقع أو واتساب)",
+     "type": "url",
+     "qr": true,
+     "placeholder": "https://..."
+    },
+    {
+     "key": "signature",
+     "label": "التوقيع",
+     "type": "text",
+     "placeholder": "أسرة آل دريهم"
+    }
+   ],
+   "defaults": {},
+   "slots": {
+    "title": "{{headline}}",
+    "body": "{{text}}",
+    "details": [
+     {
+      "icon": "calendar",
+      "label": "",
+      "value": "{{date|full}}"
+     }
+    ],
+    "qr": "link",
+    "qrLabel": "{{buttonText}}",
+    "footer": "{{signature}}"
+   },
+   "presetGroup": "announcement",
+   "styles": [
+    {
+     "style": "minimal",
+     "label": "بسيط",
+     "theme": "light"
+    },
+    {
+     "style": "split",
+     "label": "حديث",
+     "theme": "navy"
+    },
+    {
+     "style": "premium",
+     "label": "فاخر",
+     "theme": "navy"
+    },
+    {
+     "style": "photo",
+     "label": "بالصورة",
+     "theme": "navy"
+    },
+    {
+     "style": "formal",
+     "label": "رسمي",
+     "theme": "teal"
+    },
+    {
+     "style": "family",
+     "label": "عائلي",
+     "theme": "light"
+    }
+   ],
+   "sizes": [
+    "post",
+    "portrait",
+    "story",
+    "whatsapp",
+    "a4",
+    "wide"
+   ],
+   "image": "optional"
+  }
+ ],
+ "presets": [
+  {
+   "id": "wedding-invite",
+   "name": "دعوة زواج",
+   "texts": [
+    {
+     "tone": "formal",
+     "text": "يتشرف والد العريس بدعوتكم لحضور حفل زواج ابنه، ويسعده أن تشاركوه فرحته"
+    },
+    {
+     "tone": "formal",
+     "text": "بكل الحب والتقدير نتشرف بدعوتكم لحضور حفل زواج ابننا، وحضوركم يزيدنا فرحاً وسروراً"
+    },
+    {
+     "tone": "family",
+     "text": "الفرحة لا تكتمل إلا بكم، ندعوكم لمشاركتنا حفل زواج ابننا"
+    },
+    {
+     "tone": "family",
+     "text": "أهلنا وأحبابنا، يسعدنا أن تكونوا معنا في ليلة فرحنا بزواج ابننا"
+    },
+    {
+     "tone": "short",
+     "text": "ندعوكم لحضور حفل زواج"
+    },
+    {
+     "tone": "short",
+     "text": "يسرنا دعوتكم لحفل الزواج"
+    },
+    {
+     "tone": "friendly",
+     "text": "يا هلا بكم في فرحتنا، ننتظركم في حفل زواج"
+    },
+    {
+     "tone": "friendly",
+     "text": "حضوركم يكمل فرحتنا، ننتظركم في ليلة العمر"
+    }
+   ]
+  },
+  {
+   "id": "wedding-announce",
+   "name": "إعلان زواج",
+   "texts": [
+    {
+     "tone": "formal",
+     "text": "تتقدم أسرة آل دريهم بأجمل التهاني والتبريكات بمناسبة زواج ابنها، سائلين الله أن يبارك لهما ويجمع بينهما في خير"
+    },
+    {
+     "tone": "family",
+     "text": "فرحة جديدة في بيت الأسرة، نشارككم خبر زواج ابننا، بارك الله له وبارك عليه"
+    },
+    {
+     "tone": "short",
+     "text": "بارك الله لهما وبارك عليهما وجمع بينهما في خير"
+    },
+    {
+     "tone": "friendly",
+     "text": "خبر يسعد القلب، أتم الله فرحتهم ورزقهم السعادة الدائمة"
+    }
+   ]
+  },
+  {
+   "id": "wedding-reminder",
+   "name": "تذكير بالزواج",
+   "texts": [
+    {
+     "tone": "formal",
+     "text": "نذكركم بموعد حفل الزواج، وحضوركم محل تقديرنا"
+    },
+    {
+     "tone": "family",
+     "text": "موعدنا قريب، ننتظركم لنفرح معاً"
+    },
+    {
+     "tone": "short",
+     "text": "تذكير بموعد حفل الزواج"
+    },
+    {
+     "tone": "friendly",
+     "text": "لا تنسون موعدنا، الفرحة ما تحلى إلا بوجودكم"
+    }
+   ]
+  },
+  {
+   "id": "wedding-congrats",
+   "name": "تهنئة بالزواج",
+   "texts": [
+    {
+     "tone": "formal",
+     "text": "بارك الله لكما وبارك عليكما وجمع بينكما في خير"
+    },
+    {
+     "tone": "formal",
+     "text": "نتقدم بأصدق التهاني بمناسبة الزواج، سائلين الله لكما حياة سعيدة مباركة"
+    },
+    {
+     "tone": "family",
+     "text": "ألف مبروك، الله يتمم عليكم بخير ويجعلها بداية حياة سعيدة"
+    },
+    {
+     "tone": "short",
+     "text": "ألف مبروك الزواج"
+    },
+    {
+     "tone": "short",
+     "text": "بارك الله لكما"
+    },
+    {
+     "tone": "friendly",
+     "text": "مبروك يا عريس، الله يسعدك ويرزقك الذرية الصالحة"
+    }
+   ]
+  },
+  {
+   "id": "thanks",
+   "name": "شكر بعد المناسبة",
+   "texts": [
+    {
+     "tone": "formal",
+     "text": "نتقدم بخالص الشكر والتقدير لكل من شاركنا فرحتنا بحضوره أو اتصاله أو تهنئته، جزاكم الله خيراً"
+    },
+    {
+     "tone": "family",
+     "text": "شكراً من القلب لكل من كان معنا، حضوركم كان أجمل ما في المناسبة"
+    },
+    {
+     "tone": "short",
+     "text": "شكراً لحضوركم ومشاركتكم"
+    },
+    {
+     "tone": "friendly",
+     "text": "عجزت الكلمات عن شكركم، وجودكم أسعدنا ولا أراكم الله مكروهاً"
+    }
+   ]
+  },
+  {
+   "id": "ramadan",
+   "name": "تهنئة رمضان",
+   "texts": [
+    {
+     "tone": "formal",
+     "text": "نبارك لكم حلول شهر رمضان المبارك، سائلين الله أن يعيننا وإياكم على صيامه وقيامه، وأن يتقبل منا ومنكم صالح الأعمال"
+    },
+    {
+     "tone": "formal",
+     "text": "بمناسبة حلول الشهر الكريم نتقدم بأطيب التهاني، أعاده الله علينا وعليكم باليمن والبركات"
+    },
+    {
+     "tone": "family",
+     "text": "رمضان يجمعنا، كل عام وأنتم وأهلكم بخير وصحة وعافية"
+    },
+    {
+     "tone": "family",
+     "text": "أهلنا الكرام، مبارك عليكم الشهر، وجعله الله شهر خير ورحمة على بيوتنا"
+    },
+    {
+     "tone": "short",
+     "text": "رمضان مبارك، تقبل الله منا ومنكم"
+    },
+    {
+     "tone": "short",
+     "text": "كل عام وأنتم بخير"
+    },
+    {
+     "tone": "friendly",
+     "text": "هلّ هلاله، الله يبلغنا وإياكم صيامه وقيامه على خير"
+    },
+    {
+     "tone": "friendly",
+     "text": "مبارك عليكم الشهر، لا تنسونا من دعواتكم"
+    }
+   ]
+  },
+  {
+   "id": "ramadan-start",
+   "name": "دخول رمضان",
+   "texts": [
+    {
+     "tone": "formal",
+     "text": "نبارك لكم دخول شهر رمضان المبارك، جعله الله شهر خير وبركة"
+    },
+    {
+     "tone": "family",
+     "text": "حلّ الضيف الكريم، الله يجعله شهر رحمة ومغفرة لنا ولكم"
+    },
+    {
+     "tone": "short",
+     "text": "أهلاً بشهر الخير"
+    },
+    {
+     "tone": "friendly",
+     "text": "وصل رمضان، الله يبلغنا ليلة القدر ويتقبل منا ومنكم"
+    }
+   ]
+  },
+  {
+   "id": "last-ten",
+   "name": "العشر الأواخر",
+   "texts": [
+    {
+     "tone": "formal",
+     "text": "أقبلت العشر الأواخر من رمضان، أيام يُرجى فيها الخير والعتق، نسأل الله أن يبلغنا فيها ليلة القدر"
+    },
+    {
+     "tone": "family",
+     "text": "العشر الأواخر فرصة لا تتكرر، اجتهدوا فيها ولا تنسونا من صالح دعائكم"
+    },
+    {
+     "tone": "short",
+     "text": "اغتنموا العشر الأواخر"
+    },
+    {
+     "tone": "friendly",
+     "text": "شدّوا الهمة في العشر، الله يكتب لنا ولكم فيها الخير كله"
+    }
+   ]
+  },
+  {
+   "id": "qadr",
+   "name": "ليلة القدر",
+   "texts": [
+    {
+     "tone": "formal",
+     "text": "اللهم إنك عفوٌّ تحب العفو فاعفُ عنا"
+    },
+    {
+     "tone": "family",
+     "text": "في ليلة خير من ألف شهر، نسأل الله أن يتقبل منا ومنكم ويجمعنا على الخير"
+    },
+    {
+     "tone": "short",
+     "text": "ليلة خير من ألف شهر"
+    },
+    {
+     "tone": "friendly",
+     "text": "لا تنسونا من دعائكم في هذه الليالي المباركة"
+    }
+   ]
+  },
+  {
+   "id": "eid",
+   "name": "تهنئة عيد الفطر",
+   "texts": [
+    {
+     "tone": "formal",
+     "text": "نتقدم إليكم بأطيب التهاني بمناسبة عيد الفطر المبارك، تقبل الله منا ومنكم صالح الأعمال، وأعاده علينا وعليكم بالخير"
+    },
+    {
+     "tone": "formal",
+     "text": "بمناسبة عيد الفطر السعيد نبارك لكم، سائلين الله أن يديم الأفراح ويجمع شمل الأسرة على المحبة"
+    },
+    {
+     "tone": "family",
+     "text": "عيدنا أحلى بوجودكم، كل عام وأنتم بخير وسعادة"
+    },
+    {
+     "tone": "family",
+     "text": "من القلب نبارك لكم العيد، الله يسعدكم ويجمعنا دائماً على خير"
+    },
+    {
+     "tone": "short",
+     "text": "عيدكم مبارك"
+    },
+    {
+     "tone": "short",
+     "text": "تقبل الله منا ومنكم"
+    },
+    {
+     "tone": "friendly",
+     "text": "عساكم من عواده، وكل عام وأنتم بألف خير"
+    },
+    {
+     "tone": "friendly",
+     "text": "عيد سعيد، والله يعيده علينا وأنتم بأتم صحة وعافية"
+    }
+   ]
+  },
+  {
+   "id": "eid-adha",
+   "name": "تهنئة عيد الأضحى",
+   "texts": [
+    {
+     "tone": "formal",
+     "text": "نتقدم بأطيب التهاني بمناسبة عيد الأضحى المبارك، تقبل الله منا ومنكم، وأعاده علينا وعلى الأمة الإسلامية باليمن والبركات"
+    },
+    {
+     "tone": "family",
+     "text": "كل عام وأنتم بخير، الله يجعل أيامكم كلها أعياداً ويجمعنا دائماً"
+    },
+    {
+     "tone": "short",
+     "text": "عيد أضحى مبارك"
+    },
+    {
+     "tone": "short",
+     "text": "تقبل الله منا ومنكم"
+    },
+    {
+     "tone": "friendly",
+     "text": "عساكم من عواده، عيدكم مبارك وأيامكم سعيدة"
+    }
+   ]
+  },
+  {
+   "id": "eid-meeting",
+   "name": "اجتماع العيد",
+   "texts": [
+    {
+     "tone": "formal",
+     "text": "تتشرف الأسرة بدعوتكم لحضور اجتماع العيد السنوي، لنتبادل التهاني ونجدد الصلة"
+    },
+    {
+     "tone": "family",
+     "text": "العيد يجمعنا، ننتظركم في اجتماع الأسرة لنفرح معاً"
+    },
+    {
+     "tone": "short",
+     "text": "ندعوكم لاجتماع العيد"
+    },
+    {
+     "tone": "friendly",
+     "text": "لقاء العيد ما يحلى إلا بكم، لا تفوتونه"
+    }
+   ]
+  },
+  {
+   "id": "newborn",
+   "name": "مولود جديد",
+   "texts": [
+    {
+     "tone": "formal",
+     "text": "نحمد الله على ما وهب، ونسأله أن يجعله من الصالحين وقرة عين لوالديه"
+    },
+    {
+     "tone": "family",
+     "text": "فرحة جديدة في الأسرة، الله يبارك فيه ويحفظه ويجعله باراً بوالديه"
+    },
+    {
+     "tone": "short",
+     "text": "أهلاً بالمولود الجديد"
+    },
+    {
+     "tone": "short",
+     "text": "الحمد لله على السلامة"
+    },
+    {
+     "tone": "friendly",
+     "text": "أهلاً بأحدث فرد في الأسرة، الله يحفظه وينبته نباتاً حسناً"
+    }
+   ]
+  },
+  {
+   "id": "newborn-congrats",
+   "name": "تهنئة بالمولود",
+   "texts": [
+    {
+     "tone": "formal",
+     "text": "بارك الله لكم في الموهوب، وشكرتم الواهب، وبلغ أشده، ورُزقتم برّه"
+    },
+    {
+     "tone": "family",
+     "text": "مبروك ما جاكم، الله يجعله قرة عين لكم ويحفظه من كل شر"
+    },
+    {
+     "tone": "short",
+     "text": "مبروك المولود"
+    },
+    {
+     "tone": "short",
+     "text": "الحمد لله على السلامة، ومبروك"
+    },
+    {
+     "tone": "friendly",
+     "text": "نورت الأسرة بقدومه، الله يبارك فيه ويخليه لكم"
+    }
+   ]
+  },
+  {
+   "id": "graduation",
+   "name": "تخرج",
+   "texts": [
+    {
+     "tone": "formal",
+     "text": "نبارك لك تخرجك، ونسأل الله أن يجعله بداية مسيرة موفقة ونافعة"
+    },
+    {
+     "tone": "family",
+     "text": "فخورون بك، هذا اليوم ثمرة سنوات من الجد، الله يوفقك في خطوتك القادمة"
+    },
+    {
+     "tone": "short",
+     "text": "مبارك التخرج"
+    },
+    {
+     "tone": "short",
+     "text": "ألف مبروك، والقادم أجمل"
+    },
+    {
+     "tone": "friendly",
+     "text": "مبروك يا بطل، تستاهل كل خير، والله يكتب لك التوفيق"
+    }
+   ]
+  },
+  {
+   "id": "success",
+   "name": "نجاح",
+   "texts": [
+    {
+     "tone": "formal",
+     "text": "نبارك لك النجاح والتفوق، سائلين الله لك دوام التوفيق"
+    },
+    {
+     "tone": "family",
+     "text": "فرحتنا بنجاحك كبيرة، الله يوفقك ويسعدك"
+    },
+    {
+     "tone": "short",
+     "text": "مبارك النجاح"
+    },
+    {
+     "tone": "short",
+     "text": "ألف مبروك التفوق"
+    },
+    {
+     "tone": "friendly",
+     "text": "نجاحك فرّحنا كلنا، وللأمام دائماً"
+    }
+   ]
+  },
+  {
+   "id": "promotion",
+   "name": "ترقية",
+   "texts": [
+    {
+     "tone": "formal",
+     "text": "نتقدم بخالص التهاني بمناسبة الترقية، سائلين الله لك التوفيق والسداد"
+    },
+    {
+     "tone": "family",
+     "text": "فرحنا لك من القلب، تستاهل كل خير والله يزيدك من فضله"
+    },
+    {
+     "tone": "short",
+     "text": "مبارك الترقية"
+    },
+    {
+     "tone": "friendly",
+     "text": "خطوة تستحقها، والله يوفقك ويرفع قدرك"
+    }
+   ]
+  },
+  {
+   "id": "job",
+   "name": "وظيفة جديدة",
+   "texts": [
+    {
+     "tone": "formal",
+     "text": "نبارك لك الوظيفة الجديدة، ونسأل الله أن يجعلها باب خير ورزق"
+    },
+    {
+     "tone": "family",
+     "text": "مبروك الوظيفة، الله يوفقك فيها ويكتب لك النجاح"
+    },
+    {
+     "tone": "short",
+     "text": "مبارك الوظيفة الجديدة"
+    },
+    {
+     "tone": "friendly",
+     "text": "بداية جديدة جميلة، الله يسهل أمرك ويبارك في رزقك"
+    }
+   ]
+  },
+  {
+   "id": "achievement",
+   "name": "إنجاز",
+   "texts": [
+    {
+     "tone": "formal",
+     "text": "تفخر الأسرة بهذا الإنجاز، وتسأل الله لصاحبه مزيداً من التوفيق"
+    },
+    {
+     "tone": "family",
+     "text": "إنجازك رفع رؤوسنا، ومبروك من القلب"
+    },
+    {
+     "tone": "short",
+     "text": "إنجاز نفخر به"
+    },
+    {
+     "tone": "friendly",
+     "text": "بطل ما شاء الله، وننتظر منك الأكثر"
+    }
+   ]
+  },
+  {
+   "id": "condolence",
+   "name": "تعزية",
+   "texts": [
+    {
+     "tone": "formal",
+     "text": "أعظم الله أجركم، وأحسن عزاءكم، وغفر لميتكم"
+    },
+    {
+     "tone": "formal",
+     "text": "إنا لله وإنا إليه راجعون، نسأل الله أن يتغمد الفقيد بواسع رحمته، وأن يلهم أهله الصبر والسلوان"
+    },
+    {
+     "tone": "family",
+     "text": "نشارككم الحزن، ونسأل الله أن يجبر مصابكم ويجمعكم بفقيدكم في جنات النعيم"
+    },
+    {
+     "tone": "short",
+     "text": "إنا لله وإنا إليه راجعون"
+    },
+    {
+     "tone": "short",
+     "text": "أحسن الله عزاءكم"
+    },
+    {
+     "tone": "friendly",
+     "text": "قلوبنا معكم، الله يرحمه رحمة واسعة ويصبّر قلوبكم"
+    }
+   ]
+  },
+  {
+   "id": "death",
+   "name": "إعلان وفاة",
+   "texts": [
+    {
+     "tone": "formal",
+     "text": "بقلوب مؤمنة بقضاء الله وقدره، ننعى إليكم وفاة فقيدنا، سائلين الله له المغفرة والرحمة"
+    },
+    {
+     "tone": "formal",
+     "text": "إنا لله وإنا إليه راجعون، تنعى الأسرة فقيدها، سائلين الله أن يتغمده بواسع رحمته"
+    },
+    {
+     "tone": "family",
+     "text": "رحل عنا بالجسد وبقي أثره الطيب، نسأل الله له الرحمة ولكم الصبر"
+    },
+    {
+     "tone": "short",
+     "text": "إنا لله وإنا إليه راجعون"
+    },
+    {
+     "tone": "friendly",
+     "text": "نسألكم الدعاء له بالرحمة والمغفرة"
+    }
+   ]
+  },
+  {
+   "id": "meeting",
+   "name": "اجتماع عائلي",
+   "texts": [
+    {
+     "tone": "formal",
+     "text": "يسر الأسرة دعوتكم لحضور اجتماعها الدوري، تعزيزاً للتواصل وتجديداً للصلة"
+    },
+    {
+     "tone": "family",
+     "text": "اجتماعنا يكمل بكم، ننتظركم صغاراً وكباراً لنلتقي ونفرح"
+    },
+    {
+     "tone": "short",
+     "text": "ندعوكم لحضور اجتماع الأسرة"
+    },
+    {
+     "tone": "friendly",
+     "text": "اشتقنا لكم، موعدنا في اجتماع الأسرة"
+    }
+   ]
+  },
+  {
+   "id": "meeting-reminder",
+   "name": "تذكير باجتماع",
+   "texts": [
+    {
+     "tone": "formal",
+     "text": "نذكركم بموعد اجتماع الأسرة، وحضوركم محل تقدير"
+    },
+    {
+     "tone": "family",
+     "text": "اجتماعنا قريب، لا تنسون الموعد"
+    },
+    {
+     "tone": "short",
+     "text": "تذكير بموعد الاجتماع"
+    },
+    {
+     "tone": "friendly",
+     "text": "باقي على اللقاء أيام، نشوفكم هناك"
+    }
+   ]
+  },
+  {
+   "id": "council",
+   "name": "مجلس الأسرة",
+   "texts": [
+    {
+     "tone": "formal",
+     "text": "يُعقد اجتماع مجلس الأسرة لمناقشة البنود المدرجة في جدول الأعمال، ونأمل من الأعضاء الحضور في الموعد المحدد"
+    },
+    {
+     "tone": "family",
+     "text": "نلتقي في مجلس الأسرة لنتشاور فيما يخدم أسرتنا، وحضوركم ورأيكم يهمنا"
+    },
+    {
+     "tone": "short",
+     "text": "دعوة لحضور اجتماع مجلس الأسرة"
+    },
+    {
+     "tone": "friendly",
+     "text": "نلتقي ونتشاور، حضوركم يصنع الفرق"
+    }
+   ]
+  },
+  {
+   "id": "invite",
+   "name": "دعوة مناسبة",
+   "texts": [
+    {
+     "tone": "formal",
+     "text": "تتشرف الأسرة بدعوتكم لحضور المناسبة، وحضوركم يسعدنا"
+    },
+    {
+     "tone": "family",
+     "text": "ننتظركم لنقضي وقتاً جميلاً معاً"
+    },
+    {
+     "tone": "short",
+     "text": "يسرنا حضوركم"
+    },
+    {
+     "tone": "friendly",
+     "text": "المناسبة تحلى بوجودكم، ننتظركم"
+    }
+   ]
+  },
+  {
+   "id": "course",
+   "name": "دورة وبرنامج",
+   "texts": [
+    {
+     "tone": "formal",
+     "text": "برنامج تدريبي يهدف إلى تطوير المهارات وتبادل الخبرات بين أبناء الأسرة"
+    },
+    {
+     "tone": "family",
+     "text": "فرصة للتعلم واللقاء، ننتظر مشاركتكم"
+    },
+    {
+     "tone": "short",
+     "text": "التسجيل متاح الآن، والمقاعد محدودة"
+    },
+    {
+     "tone": "friendly",
+     "text": "تعال نتعلم مع بعض، وسجّل قبل اكتمال العدد"
+    }
+   ]
+  },
+  {
+   "id": "trip",
+   "name": "رحلة",
+   "texts": [
+    {
+     "tone": "formal",
+     "text": "تنظم الأسرة رحلة ترفيهية لأبنائها، ونأمل ممن يرغب في المشاركة التسجيل قبل الموعد"
+    },
+    {
+     "tone": "family",
+     "text": "رحلة تجمعنا بعيداً عن الروتين، والأجمل أنها مع الأهل"
+    },
+    {
+     "tone": "short",
+     "text": "سجّل في الرحلة قبل اكتمال العدد"
+    },
+    {
+     "tone": "friendly",
+     "text": "جهّز نفسك، الرحلة بتكون ممتعة بوجودك"
+    }
+   ]
+  },
+  {
+   "id": "event",
+   "name": "فعالية",
+   "texts": [
+    {
+     "tone": "formal",
+     "text": "تدعوكم الأسرة للمشاركة في الفعالية، وتتطلع إلى حضوركم وتفاعلكم"
+    },
+    {
+     "tone": "family",
+     "text": "جوّ حماسي ولقاء أهل، لا يفوتكم"
+    },
+    {
+     "tone": "short",
+     "text": "شارك الآن"
+    },
+    {
+     "tone": "friendly",
+     "text": "حماس وتحدي وجوائز، ننتظرك"
+    }
+   ]
+  },
+  {
+   "id": "announcement",
+   "name": "إعلان",
+   "texts": [
+    {
+     "tone": "formal",
+     "text": "تحيط الأسرة أبناءها علماً بما يلي، راجين الاطلاع والتعاون"
+    },
+    {
+     "tone": "family",
+     "text": "أهلنا الكرام، نشارككم هذا الخبر ونسعد بتفاعلكم"
+    },
+    {
+     "tone": "short",
+     "text": "للاطلاع والتعاون"
+    },
+    {
+     "tone": "friendly",
+     "text": "خبر يهمك، اقرأه وشاركه مع أهلك"
+    }
+   ]
+  },
+  {
+   "id": "alert",
+   "name": "تنبيه",
+   "texts": [
+    {
+     "tone": "formal",
+     "text": "نود التنبيه إلى ما يلي، شاكرين تعاونكم"
+    },
+    {
+     "tone": "family",
+     "text": "للتذكير والفائدة، نرجو الانتباه لما يلي"
+    },
+    {
+     "tone": "short",
+     "text": "يرجى الانتباه"
+    },
+    {
+     "tone": "friendly",
+     "text": "تنبيه سريع يهمكم"
+    }
+   ]
+  },
+  {
+   "id": "news",
+   "name": "خبر",
+   "texts": [
+    {
+     "tone": "formal",
+     "text": "تعلن الأسرة عن الخبر التالي، سائلين الله أن يديم أفراحها"
+    },
+    {
+     "tone": "family",
+     "text": "خبر سعيد نحب نشاركه معكم"
+    },
+    {
+     "tone": "short",
+     "text": "من أخبار الأسرة"
+    },
+    {
+     "tone": "friendly",
+     "text": "خبر حلو وصلنا ونحب تعرفونه"
+    }
+   ]
+  },
+  {
+   "id": "appreciation",
+   "name": "شكر وتقدير",
+   "texts": [
+    {
+     "tone": "formal",
+     "text": "تتقدم الأسرة بخالص الشكر والتقدير على الجهود المبذولة، سائلين الله أن يجزيه خير الجزاء"
+    },
+    {
+     "tone": "family",
+     "text": "شكراً من القلب، جهدك واضح وأثرك جميل"
+    },
+    {
+     "tone": "short",
+     "text": "شكراً وتقديراً"
+    },
+    {
+     "tone": "friendly",
+     "text": "ما قصرت، الله يعطيك العافية"
+    }
+   ]
+  },
+  {
+   "id": "congrats",
+   "name": "تهنئة عامة",
+   "texts": [
+    {
+     "tone": "formal",
+     "text": "نتقدم بأطيب التهاني وأصدق الأمنيات بهذه المناسبة السعيدة"
+    },
+    {
+     "tone": "family",
+     "text": "فرحتك فرحتنا، ألف مبروك"
+    },
+    {
+     "tone": "short",
+     "text": "ألف مبروك"
+    },
+    {
+     "tone": "friendly",
+     "text": "مبروك من القلب، وعقبال كل خير"
+    }
+   ]
+  },
+  {
+   "id": "fund",
+   "name": "صندوق أواصر",
+   "texts": [
+    {
+     "tone": "formal",
+     "text": "يسر إدارة صندوق أواصر إحاطة المساهمين علماً بما يلي، شاكرين ثقتهم ومشاركتهم"
+    },
+    {
+     "tone": "family",
+     "text": "أهلنا المساهمين، شكراً لثقتكم، ونشارككم آخر مستجدات الصندوق"
+    },
+    {
+     "tone": "short",
+     "text": "للاطلاع"
+    },
+    {
+     "tone": "friendly",
+     "text": "خبر يخص الصندوق، ويهمنا تعرفونه"
+    }
+   ]
+  },
+  {
+   "id": "contributions",
+   "name": "تذكير بالمساهمات",
+   "texts": [
+    {
+     "tone": "formal",
+     "text": "نذكّر المساهمين الكرام بموعد المساهمة الدورية في صندوق أواصر، شاكرين التزامكم"
+    },
+    {
+     "tone": "family",
+     "text": "مساهمتك تبني مستقبل الأسرة، لا تنس موعدها"
+    },
+    {
+     "tone": "short",
+     "text": "تذكير بموعد المساهمة"
+    },
+    {
+     "tone": "friendly",
+     "text": "كل مساهمة تفرق، شكراً لأنك جزء من الصندوق"
+    }
+   ]
+  },
+  {
+   "id": "fund-report",
+   "name": "تقرير الصندوق",
+   "texts": [
+    {
+     "tone": "formal",
+     "text": "نضع بين أيديكم ملخص أداء الصندوق للفترة، شاكرين ثقتكم ومساهمتكم"
+    },
+    {
+     "tone": "family",
+     "text": "هذه ثمرة مساهماتكم، والقادم أفضل بإذن الله"
+    },
+    {
+     "tone": "short",
+     "text": "ملخص أداء الفترة"
+    },
+    {
+     "tone": "friendly",
+     "text": "أرقام تفرّح، شكراً لكل مساهم"
+    }
+   ]
+  }
+ ],
+ "backgrounds": []
+}

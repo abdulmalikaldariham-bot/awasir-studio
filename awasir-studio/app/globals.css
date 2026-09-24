@@ -1,0 +1,33 @@
+@import "@fontsource/cairo/400.css";
+@import "@fontsource/cairo/500.css";
+@import "@fontsource/cairo/600.css";
+@import "@fontsource/cairo/700.css";
+@import "@fontsource/cairo/800.css";
+@import "@fontsource/cairo/900.css";
+@import "../components/design/design.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light; }
+html { background: #F3F8F8; }
+body { @apply font-sans text-ink antialiased; }
+::selection { background: #8CC0C7; color: #1C3F4E; }
+
+@layer components {
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 h-11 text-[15px] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none; }
+  .btn-primary { @apply btn bg-navy text-white hover:bg-navy-700; }
+  .btn-teal { @apply btn bg-teal text-white hover:bg-teal-600; }
+  .btn-ghost { @apply btn bg-white text-navy ring-1 ring-line hover:bg-mist-50; }
+  .btn-sm { @apply h-9 px-3 text-sm rounded-lg; }
+  .input { @apply w-full rounded-xl border border-line bg-white px-3.5 h-11 text-[15px] text-ink placeholder:text-ink-faint focus:outline-none focus:border-teal focus:ring-2 focus:ring-mist/60; }
+  textarea.input { @apply h-auto py-2.5 leading-7; }
+  .label { @apply block text-sm font-semibold text-ink mb-1.5; }
+  .hint { @apply text-xs text-ink-faint mt-1; }
+  .chip { @apply inline-flex items-center h-9 px-3.5 rounded-full text-sm font-semibold ring-1 ring-line bg-white text-ink-soft hover:ring-teal transition; }
+  .chip-on { @apply bg-navy text-white ring-navy hover:ring-navy; }
+  .panel { @apply rounded-2xl bg-white ring-1 ring-line; }
+}
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
