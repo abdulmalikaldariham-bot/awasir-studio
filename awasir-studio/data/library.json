@@ -185,7 +185,7 @@
     "eyebrow": "دعوة زواج",
     "body": "{{text}}",
     "title": "{{groomName}}",
-    "subtitle": "[[نجل {{groomFather}}]][[ {{familyName}}]]",
+    "subtitle": "[[{{groomFather}}]][[ {{familyName}}]]",
     "details": [
      {
       "icon": "calendar",
@@ -285,7 +285,7 @@
    "slots": {
     "eyebrow": "إعلان زواج",
     "title": "{{groomName}}",
-    "subtitle": "[[نجل {{groomFather}}]]",
+    "subtitle": "[[{{groomFather}}]]",
     "body": "{{text}}",
     "details": [
      {
