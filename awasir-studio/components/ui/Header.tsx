@@ -12,7 +12,7 @@ const NAV = [
 export function Header() {
   const path = usePathname();
   const { hasLocalChanges } = useLibrary();
-  if (path.startsWith("/editor")) return null; // المحرر له شريطه الخاص
+  if (path.startsWith("/editor") || path.startsWith("/lab/thumbs")) return null; // المحرر له شريطه الخاص، وصفحة التصوير بلا شريط
   return (
     <>
       {hasLocalChanges && (
@@ -25,14 +25,14 @@ export function Header() {
         <div className="mx-auto max-w-7xl h-16 px-4 sm:px-6 flex items-center gap-6">
           <Link href="/" className="flex items-center gap-3 shrink-0" aria-label="استوديو أواصر">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/brand/mark.svg" alt="" className="h-8 w-auto" />
+            <img src="/assets/awaser/mark.svg" alt="" className="h-8 w-auto" />
             <span className="text-lg font-bold text-navy">استوديو أواصر</span>
           </Link>
           <nav className="flex items-center gap-1 overflow-x-auto">
             {NAV.map((n) => {
               const on = n.href === "/" ? path === "/" || path.startsWith("/c/") : path.startsWith(n.href);
               return (
-                <Link key={n.href} href={n.href}
+                <Link key={n.href} href={n.href} prefetch={n.href === "/" ? undefined : false}
                   className={`px-3 h-9 inline-flex items-center rounded-lg text-[15px] font-semibold whitespace-nowrap transition-colors ${on ? "bg-white text-navy ring-1 ring-line" : "text-ink-soft hover:text-navy"}`}>
                   {n.label}
                 </Link>

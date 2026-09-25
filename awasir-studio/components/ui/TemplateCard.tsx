@@ -4,16 +4,16 @@ import { useEffect, useMemo, useState } from "react";
 import { X } from "lucide-react";
 import type { Template } from "@/lib/types";
 import { sampleValues, useLibrary } from "@/lib/library";
-import { Preview } from "@/components/design/Preview";
+import { PreviewOnDemand as Preview } from "@/components/design/PreviewOnDemand";
+import { Thumb } from "./Thumb";
 
-export function TemplateCard({ t, onOpen, showCategory }: { t: Template; onOpen: (t: Template) => void; showCategory?: boolean }) {
+export function TemplateCard({ t, onOpen, showCategory, priority }: { t: Template; onOpen: (t: Template) => void; showCategory?: boolean; priority?: boolean }) {
   const { library } = useLibrary();
-  const values = useMemo(() => sampleValues(t, library), [t, library]);
   const cat = library.categories.find((c) => c.id === t.category);
   return (
     <button onClick={() => onOpen(t)} className="group text-start focus-visible:outline-none">
       <div className="rounded-2xl bg-white p-2 ring-1 ring-line transition group-hover:ring-teal group-hover:shadow-lift group-focus-visible:ring-2 group-focus-visible:ring-teal">
-        <Preview template={t} values={values} styleIndex={0} size="portrait" className="w-full rounded-xl overflow-hidden" />
+        <Thumb t={t} className="w-full rounded-xl" priority={priority} />
       </div>
       <div className="px-1 pt-2.5">
         <p className="font-bold text-navy leading-6">{t.name}</p>
@@ -57,7 +57,7 @@ export function TemplateModal({ t, onClose }: { t: Template | null; onClose: () 
               {t.styles.map((s, i) => (
                 <button key={i} onClick={() => setStyle(i)} className="text-start">
                   <div className={`rounded-xl p-1 ring-2 transition ${i === style ? "ring-teal bg-white" : "ring-transparent hover:ring-line"}`}>
-                    <Preview template={t} values={values} styleIndex={i} size="post" className="w-full rounded-lg overflow-hidden" />
+                    <Thumb t={t} style={i} sizes="110px" className="w-full rounded-lg" />
                   </div>
                   <p className={`text-sm mt-1 px-1 ${i === style ? "font-bold text-navy" : "text-ink-soft"}`}>{s.label}</p>
                 </button>
