@@ -1,37 +1,5 @@
-// عناصر الزواج: البشت (المشلح)، الدلة والفنجال، الختم، الخاتمان
+// عناصر الزواج: الدلة والفنجال، الختم، الخاتمان
 import { Svg, soft, scallop, hexPath, type ArtProps } from "./base";
-
-/** البشت السعودي من الأمام، بحواشي الزري الذهبية */
-export function Bisht(p: ArtProps) {
-  const body = "M50 10C45 10 41 11 38 13C30 16 20 20 13 26C7 32 4 44 3 58L2 76C6 78 11 78 15 76L13 105C30 108 70 108 87 105L85 76C89 78 94 78 98 76L97 58C96 44 93 32 87 26C80 20 70 16 62 13C59 11 55 10 50 10Z";
-  const zariL = "M38 13.5L42.5 13L40.2 66L35.4 66Z";
-  const zariR = "M62 13.5L57.5 13L59.8 66L64.6 66Z";
-  const dots = Array.from({ length: 8 }, (_, i) => 18 + i * 6);
-  return (
-    <Svg vb="0 0 100 110" {...p}>
-      <path d={body} {...soft} />
-      {/* الثوب الظاهر من فتحة البشت */}
-      <path d="M42.5 13C45 17 47 19 50 19.5C53 19 55 17 57.5 13L60.5 106C54 107 46 107 39.5 106Z" fill="currentColor" fillOpacity={0.05} />
-      {/* ثنيات القماش */}
-      <path d="M27 40C26 60 24.5 82 23.5 104M73 40C74 60 75.5 82 76.5 104M33 70C32.5 82 32 94 31.5 105M67 70C67.5 82 68 94 68.5 105" strokeOpacity={0.45} strokeWidth={1.1} />
-      {/* الزري */}
-      <path d={zariL} fill="currentColor" fillOpacity={0.85} stroke="none" />
-      <path d={zariR} fill="currentColor" fillOpacity={0.85} stroke="none" />
-      <path d="M34.8 66L34 72M65.2 66L66 72" strokeWidth={1.2} />
-      {dots.map((y) => (
-        <g key={y} strokeWidth={0.7}>
-          <path d={`M${37.6 - (y - 18) * 0.045} ${y}l1.6 2.2l-1.6 2.2l-1.6-2.2z`} fill="currentColor" stroke="none" fillOpacity={0.35} />
-          <path d={`M${62.4 + (y - 18) * 0.045} ${y}l1.6 2.2l-1.6 2.2l-1.6-2.2z`} fill="currentColor" stroke="none" fillOpacity={0.35} />
-        </g>
-      ))}
-      <path d="M38 13C42 21 58 21 62 13" strokeWidth={2.4} />
-      {/* فتحتا اليدين */}
-      <path d="M17 36L18 72M83 36L82 72" strokeWidth={2.2} />
-      <path d="M40.2 66L39.5 106M59.8 66L60.5 106" />
-      <path d={body} />
-    </Svg>
-  );
-}
 
 /** الدلة مع فنجال */
 export function Dallah(p: ArtProps) {
