@@ -1,9 +1,5 @@
-@import "@fontsource/cairo/400.css";
-@import "@fontsource/cairo/500.css";
-@import "@fontsource/cairo/600.css";
-@import "@fontsource/cairo/700.css";
-@import "@fontsource/cairo/800.css";
-@import "@fontsource/cairo/900.css";
+/* خط Cairo المتغير: ملف واحد لكل الأوزان (٢٠٠–١٠٠٠) بدل ستة ملفات منفصلة */
+@import "@fontsource-variable/cairo/wght.css";
 @import "../components/design/design.css";
 
 @tailwind base;
@@ -31,3 +27,21 @@ body { @apply font-sans text-ink antialiased; }
 }
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+
+/* هيكل التحميل: لمعة هادئة بألوان أواصر */
+.skeleton {
+  background: linear-gradient(100deg, #E6F1F2 20%, #F3F8F8 40%, #E6F1F2 60%) 0 0 / 300% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+@keyframes shimmer { from { background-position: 100% 0; } to { background-position: 0 0; } }
+
+/* صفحة إنشاء التصميم: الخطوات بالترتيب، والمعاينة ثابتة بجانبها على الشاشات الكبيرة */
+.editor-grid { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-areas: "data" "prev" "opts" "cust" "exp"; }
+@media (min-width: 1024px) {
+  .editor-grid {
+    grid-template-columns: 460px minmax(0, 1fr);
+    grid-template-rows: auto auto auto auto 1fr;
+    grid-template-areas: "data prev" "opts prev" "cust prev" "exp prev" "rest prev";
+  }
+  .editor-grid::after { content: ""; grid-area: rest; background: #fff; }
+}
