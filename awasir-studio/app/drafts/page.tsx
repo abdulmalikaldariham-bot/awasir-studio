@@ -7,6 +7,7 @@ import { drafts, newId } from "@/lib/drafts";
 import { useLibrary } from "@/lib/library";
 import { SIZES } from "@/lib/design";
 import { Preview } from "@/components/design/Preview";
+import { WhenVisible } from "@/components/ui/Thumb";
 
 const when = (iso: string) =>
   new Intl.DateTimeFormat("ar-SA-u-nu-arab", { day: "numeric", month: "long", hour: "numeric", minute: "2-digit" }).format(new Date(iso));
@@ -53,7 +54,9 @@ export default function DraftsPage() {
               <div key={d.id}>
                 <Link href={`/editor/${t.id}?draft=${d.id}`} className="block rounded-2xl bg-white p-2 ring-1 ring-line hover:ring-teal hover:shadow-lift transition">
                   <div className="aspect-[4/5] grid place-items-center overflow-hidden rounded-xl bg-mist-50">
-                    <Preview template={t} values={d.values} styleIndex={d.styleIndex} size={d.size} custom={d.custom} fit="contain" className="h-full w-full" />
+                    <WhenVisible className="h-full w-full">
+                      <Preview template={t} values={d.values} styleIndex={d.styleIndex} size={d.size} custom={d.custom} fit="contain" className="h-full w-full" />
+                    </WhenVisible>
                   </div>
                 </Link>
                 <p className="font-bold text-navy mt-2.5 px-1 truncate">{d.name}</p>
