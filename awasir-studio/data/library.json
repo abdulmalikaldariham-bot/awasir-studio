@@ -212,18 +212,18 @@
    "styles": [
     {
      "style": "formal",
-     "label": "كلاسيكي",
-     "theme": "navy"
+     "theme": "navy",
+     "label": "رسمي فاخر"
+    },
+    {
+     "style": "split",
+     "theme": "navy",
+     "label": "سعودي حديث"
     },
     {
      "style": "minimal",
-     "label": "بسيط",
-     "theme": "light"
-    },
-    {
-     "style": "premium",
-     "label": "فاخر",
-     "theme": "navy"
+     "theme": "light",
+     "label": "بسيط أنيق"
     }
    ],
    "sizes": [
@@ -234,7 +234,9 @@
     "a4",
     "wide"
    ],
-   "image": "optional"
+   "image": "optional",
+   "occasion": "wedding",
+   "art": "bisht"
   },
   {
    "id": "wedding-announce",
@@ -305,18 +307,18 @@
    "styles": [
     {
      "style": "premium",
-     "label": "فاخر",
-     "theme": "navy"
-    },
-    {
-     "style": "family",
-     "label": "عائلي",
-     "theme": "light"
+     "theme": "navy",
+     "label": "فاخر"
     },
     {
      "style": "split",
-     "label": "حديث",
-     "theme": "navy"
+     "theme": "navy",
+     "label": "سعودي حديث"
+    },
+    {
+     "style": "family",
+     "theme": "light",
+     "label": "عائلي"
     }
    ],
    "sizes": [
@@ -327,7 +329,9 @@
     "a4",
     "wide"
    ],
-   "image": "optional"
+   "image": "optional",
+   "occasion": "wedding",
+   "art": "seal"
   },
   {
    "id": "wedding-reminder",
@@ -434,7 +438,9 @@
     "a4",
     "wide"
    ],
-   "image": "optional"
+   "image": "optional",
+   "occasion": "wedding",
+   "art": "dallah"
   },
   {
    "id": "wedding-congrats",
@@ -474,19 +480,19 @@
    "presetGroup": "wedding-congrats",
    "styles": [
     {
-     "style": "premium",
-     "label": "فاخر",
-     "theme": "navy"
-    },
-    {
-     "style": "family",
-     "label": "عائلي",
-     "theme": "light"
-    },
-    {
      "style": "formal",
-     "label": "رسمي",
-     "theme": "teal"
+     "theme": "navy",
+     "label": "رسمي فاخر"
+    },
+    {
+     "style": "premium",
+     "theme": "navy",
+     "label": "فاخر"
+    },
+    {
+     "style": "minimal",
+     "theme": "light",
+     "label": "بسيط أنيق"
     }
    ],
    "sizes": [
@@ -497,7 +503,9 @@
     "a4",
     "wide"
    ],
-   "image": "optional"
+   "image": "optional",
+   "occasion": "wedding",
+   "art": "bisht"
   },
   {
    "id": "thanks-after",
@@ -562,7 +570,9 @@
     "a4",
     "wide"
    ],
-   "image": "optional"
+   "image": "optional",
+   "occasion": "wedding",
+   "art": "dallah"
   },
   {
    "id": "ramadan-greeting",
@@ -611,19 +621,19 @@
    "presetGroup": "ramadan",
    "styles": [
     {
-     "style": "split",
-     "label": "حديث",
-     "theme": "navy"
+     "style": "formal",
+     "theme": "navy",
+     "label": "فوانيس"
     },
     {
-     "style": "formal",
-     "label": "تقليدي",
-     "theme": "navy"
+     "style": "premium",
+     "theme": "navy",
+     "label": "هلال"
     },
     {
      "style": "minimal",
-     "label": "بسيط",
-     "theme": "light"
+     "theme": "light",
+     "label": "بسيط"
     }
    ],
    "sizes": [
@@ -634,7 +644,9 @@
     "a4",
     "wide"
    ],
-   "image": "optional"
+   "image": "optional",
+   "occasion": "ramadan",
+   "art": "crescent"
   },
   {
    "id": "ramadan-start",
@@ -712,7 +724,9 @@
     "a4",
     "wide"
    ],
-   "image": "optional"
+   "image": "optional",
+   "occasion": "ramadan",
+   "art": "lantern"
   },
   {
    "id": "last-ten",
@@ -778,7 +792,9 @@
     "a4",
     "wide"
    ],
-   "image": "none"
+   "image": "none",
+   "occasion": "ramadan",
+   "art": "mihrab"
   },
   {
    "id": "laylat-alqadr",
@@ -844,7 +860,9 @@
     "a4",
     "wide"
    ],
-   "image": "none"
+   "image": "none",
+   "occasion": "ramadan",
+   "art": "quran-stand"
   },
   {
    "id": "eid-fitr-greeting",
@@ -894,18 +912,18 @@
    "styles": [
     {
      "style": "formal",
-     "label": "رسمي",
-     "theme": "navy"
+     "theme": "teal",
+     "label": "احتفالي"
     },
     {
      "style": "family",
-     "label": "عائلي",
-     "theme": "light"
+     "theme": "light",
+     "label": "عائلي"
     },
     {
      "style": "premium",
-     "label": "أنيق",
-     "theme": "teal"
+     "theme": "navy",
+     "label": "أنيق"
     }
    ],
    "sizes": [
@@ -916,7 +934,9 @@
     "a4",
     "wide"
    ],
-   "image": "optional"
+   "image": "optional",
+   "occasion": "eid-fitr",
+   "art": "gift"
   },
   {
    "id": "eid-fitr-meeting",
@@ -1031,7 +1051,9 @@
     "a4",
     "wide"
    ],
-   "image": "optional"
+   "image": "optional",
+   "occasion": "eid-fitr",
+   "art": "gift"
   },
   {
    "id": "eid-adha-greeting",
@@ -1081,18 +1103,18 @@
    "styles": [
     {
      "style": "formal",
-     "label": "رسمي",
-     "theme": "navy"
+     "theme": "navy",
+     "label": "رسمي"
     },
     {
      "style": "family",
-     "label": "عائلي",
-     "theme": "light"
+     "theme": "light",
+     "label": "عائلي"
     },
     {
      "style": "premium",
-     "label": "أنيق",
-     "theme": "teal"
+     "theme": "teal",
+     "label": "أنيق"
     }
    ],
    "sizes": [
@@ -1103,7 +1125,9 @@
     "a4",
     "wide"
    ],
-   "image": "optional"
+   "image": "optional",
+   "occasion": "eid-adha",
+   "art": "star8"
   },
   {
    "id": "eid-adha-meeting",
@@ -1218,7 +1242,9 @@
     "a4",
     "wide"
    ],
-   "image": "optional"
+   "image": "optional",
+   "occasion": "eid-adha",
+   "art": "star8"
   },
   {
    "id": "newborn",
@@ -1318,7 +1344,9 @@
     "a4",
     "wide"
    ],
-   "image": "optional"
+   "image": "optional",
+   "occasion": "birth",
+   "art": "moon-clouds"
   },
   {
    "id": "newborn-congrats",
@@ -1398,7 +1426,9 @@
     "a4",
     "wide"
    ],
-   "image": "optional"
+   "image": "optional",
+   "occasion": "birth",
+   "art": "cradle-stars"
   },
   {
    "id": "graduation",
@@ -1497,7 +1527,9 @@
     "a4",
     "wide"
    ],
-   "image": "recommended"
+   "image": "recommended",
+   "occasion": "success",
+   "art": "cap"
   },
   {
    "id": "success",
@@ -1574,7 +1606,9 @@
     "a4",
     "wide"
    ],
-   "image": "optional"
+   "image": "optional",
+   "occasion": "success",
+   "art": "medal"
   },
   {
    "id": "promotion",
@@ -1650,7 +1684,9 @@
     "a4",
     "wide"
    ],
-   "image": "optional"
+   "image": "optional",
+   "occasion": "career",
+   "art": "steps"
   },
   {
    "id": "new-job",
@@ -1726,7 +1762,9 @@
     "a4",
     "wide"
    ],
-   "image": "optional"
+   "image": "optional",
+   "occasion": "career",
+   "art": "briefcase"
   },
   {
    "id": "achievement",
@@ -1798,7 +1836,9 @@
     "a4",
     "wide"
    ],
-   "image": "recommended"
+   "image": "recommended",
+   "occasion": "success",
+   "art": "rosette"
   },
   {
    "id": "condolence",
@@ -1880,7 +1920,9 @@
     "a4",
     "wide"
    ],
-   "image": "none"
+   "image": "none",
+   "occasion": "condolence",
+   "art": "hex"
   },
   {
    "id": "death-announce",
@@ -1985,7 +2027,9 @@
     "a4",
     "wide"
    ],
-   "image": "none"
+   "image": "none",
+   "occasion": "condolence",
+   "art": "hex"
   },
   {
    "id": "funeral-details",
@@ -2112,7 +2156,9 @@
     "a4",
     "wide"
    ],
-   "image": "none"
+   "image": "none",
+   "occasion": "condolence",
+   "art": "hex"
   },
   {
    "id": "family-meeting",
@@ -2236,7 +2282,9 @@
     "a4",
     "wide"
    ],
-   "image": "optional"
+   "image": "optional",
+   "occasion": "family",
+   "art": "majlis"
   },
   {
    "id": "meeting-reminder",
@@ -2340,7 +2388,9 @@
     "a4",
     "wide"
    ],
-   "image": "none"
+   "image": "none",
+   "occasion": "family",
+   "art": "calendar"
   },
   {
    "id": "council-meeting",
@@ -2449,7 +2499,9 @@
     "a4",
     "wide"
    ],
-   "image": "none"
+   "image": "none",
+   "occasion": "family",
+   "art": "majlis"
   },
   {
    "id": "family-occasion",
@@ -2564,7 +2616,9 @@
     "a4",
     "wide"
    ],
-   "image": "optional"
+   "image": "optional",
+   "occasion": "family",
+   "art": "dallah"
   },
   {
    "id": "course",
@@ -2691,7 +2745,9 @@
     "a4",
     "wide"
    ],
-   "image": "recommended"
+   "image": "recommended",
+   "occasion": "program",
+   "art": "certificate"
   },
   {
    "id": "workshop",
@@ -2818,7 +2874,9 @@
     "a4",
     "wide"
    ],
-   "image": "recommended"
+   "image": "recommended",
+   "occasion": "program",
+   "art": "papers"
   },
   {
    "id": "talk",
@@ -2930,7 +2988,9 @@
     "a4",
     "wide"
    ],
-   "image": "recommended"
+   "image": "recommended",
+   "occasion": "program",
+   "art": "mic"
   },
   {
    "id": "trip",
@@ -3046,7 +3106,9 @@
     "a4",
     "wide"
    ],
-   "image": "recommended"
+   "image": "recommended",
+   "occasion": "trip",
+   "art": "compass"
   },
   {
    "id": "tournament",
@@ -3163,7 +3225,9 @@
     "a4",
     "wide"
    ],
-   "image": "recommended"
+   "image": "recommended",
+   "occasion": "competition",
+   "art": "trophy"
   },
   {
    "id": "competition",
@@ -3256,7 +3320,9 @@
     "a4",
     "wide"
    ],
-   "image": "optional"
+   "image": "optional",
+   "occasion": "competition",
+   "art": "podium"
   },
   {
    "id": "announcement",
@@ -3342,7 +3408,9 @@
     "a4",
     "wide"
    ],
-   "image": "optional"
+   "image": "optional",
+   "occasion": "general",
+   "art": "megaphone"
   },
   {
    "id": "alert",
@@ -3408,7 +3476,9 @@
     "a4",
     "wide"
    ],
-   "image": "none"
+   "image": "none",
+   "occasion": "general",
+   "art": "bell"
   },
   {
    "id": "news",
@@ -3487,7 +3557,9 @@
     "a4",
     "wide"
    ],
-   "image": "recommended"
+   "image": "recommended",
+   "occasion": "general",
+   "art": "news"
   },
   {
    "id": "appreciation",
@@ -3558,7 +3630,9 @@
     "a4",
     "wide"
    ],
-   "image": "optional"
+   "image": "optional",
+   "occasion": "celebrate",
+   "art": "rosette"
   },
   {
    "id": "general-congrats",
@@ -3629,7 +3703,9 @@
     "a4",
     "wide"
    ],
-   "image": "optional"
+   "image": "optional",
+   "occasion": "celebrate",
+   "art": "burst"
   },
   {
    "id": "fund-announcement",
@@ -3717,7 +3793,9 @@
     "a4",
     "wide"
    ],
-   "image": "none"
+   "image": "none",
+   "occasion": "fund",
+   "art": "megaphone"
   },
   {
    "id": "contributions-reminder",
@@ -3811,7 +3889,9 @@
     "a4",
     "wide"
    ],
-   "image": "none"
+   "image": "none",
+   "occasion": "fund",
+   "art": "calendar"
   },
   {
    "id": "fund-report",
@@ -3944,7 +4024,9 @@
     "a4",
     "wide"
    ],
-   "image": "none"
+   "image": "none",
+   "occasion": "fund",
+   "art": "chart"
   },
   {
    "id": "fund-meeting",
@@ -4061,7 +4143,9 @@
     "a4",
     "wide"
    ],
-   "image": "none"
+   "image": "none",
+   "occasion": "fund",
+   "art": "calendar"
   },
   {
    "id": "free-design",
@@ -4164,7 +4248,9 @@
     "a4",
     "wide"
    ],
-   "image": "optional"
+   "image": "optional",
+   "occasion": "general",
+   "art": "hex"
   }
  ],
  "presets": [
