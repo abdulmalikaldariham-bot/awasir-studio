@@ -1,4 +1,5 @@
 import type { Brand, Custom, SizeId, StyleId, ThemeId } from "./types";
+import type { Occasion } from "./occasions";
 
 export interface SizeSpec { id: SizeId; name: string; hint: string; w: number; h: number }
 
@@ -34,14 +35,19 @@ export const THEME_NAMES: Record<ThemeId, string> = { navy: "كحلي", teal: "�
 
 export interface Palette {
   bg: string; bg2: string; fg: string; muted: string; accent: string; line: string; card: string; dark: boolean;
+  /** لون زخارف المناسبة */
+  orn: string;
 }
 
-export function palette(theme: ThemeId, brand: Brand, accent?: Custom["accent"]): Palette {
+export function palette(theme: ThemeId, brand: Brand, accent?: Custom["accent"], occ?: Occasion): Palette {
   const { navy, teal, light } = brand.colors;
+  // المناسبة تغيّر درجة الخلفية قليلاً فقط، وتضيف لونها المساند للزخارف
+  const deep = occ?.deep ?? navy;
+  const paper = occ?.paper ?? mix(light, "#FFFFFF", 0.86);
   const base: Record<ThemeId, Palette> = {
-    navy: { bg: navy, bg2: teal, fg: "#FFFFFF", muted: "rgba(255,255,255,.74)", accent: light, line: hexA(light, 0.32), card: hexA("#FFFFFF", 0.06), dark: true },
-    teal: { bg: teal, bg2: navy, fg: "#FFFFFF", muted: "rgba(255,255,255,.8)", accent: mix(light, "#FFFFFF", 0.45), line: hexA("#FFFFFF", 0.26), card: hexA(navy, 0.18), dark: true },
-    light: { bg: mix(light, "#FFFFFF", 0.86), bg2: mix(light, "#FFFFFF", 0.62), fg: navy, muted: mix(navy, "#FFFFFF", 0.28), accent: teal, line: hexA(teal, 0.28), card: "#FFFFFF", dark: false },
+    navy: { bg: deep, bg2: teal, fg: "#FFFFFF", muted: "rgba(255,255,255,.74)", accent: light, line: hexA(light, 0.32), card: hexA("#FFFFFF", 0.06), dark: true, orn: occ?.gold ?? light },
+    teal: { bg: teal, bg2: navy, fg: "#FFFFFF", muted: "rgba(255,255,255,.8)", accent: mix(light, "#FFFFFF", 0.45), line: hexA("#FFFFFF", 0.26), card: hexA(navy, 0.18), dark: true, orn: occ ? mix(occ.gold, "#FFFFFF", 0.15) : mix(light, "#FFFFFF", 0.45) },
+    light: { bg: paper, bg2: mix(light, "#FFFFFF", 0.62), fg: navy, muted: mix(navy, "#FFFFFF", 0.28), accent: teal, line: hexA(teal, 0.28), card: "#FFFFFF", dark: false, orn: occ?.goldOnLight ?? teal },
   };
   const p = { ...base[theme] };
   if (accent) {
@@ -96,5 +102,5 @@ export const DEFAULT_CUSTOM: Custom = {
   titleScale: 1,
   bodyScale: 1,
   logo: "full",
-  pattern: "rings",
+  pattern: "auto",
 };

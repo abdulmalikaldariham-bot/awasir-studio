@@ -1,3 +1,5 @@
+import type { ArtId, OccasionId } from "./occasions";
+
 // أنواع البيانات الأساسية لاستوديو أواصر.
 // كل القوالب والتصنيفات والنصوص مخزنة كبيانات في data/library.json
 // ولا يحتاج إضافة قالب جديد أي تعديل في الكود.
@@ -59,6 +61,10 @@ export interface Template {
   styles: StyleOption[];
   sizes: SizeId[];
   image: "none" | "optional" | "recommended";
+  /** شخصية المناسبة البصرية (افتراضياً حسب التصنيف) */
+  occasion?: OccasionId;
+  /** العنصر الرئيسي في التصميم (افتراضياً حسب المناسبة) */
+  art?: ArtId;
 }
 
 export interface Category {
@@ -105,9 +111,10 @@ export interface Custom {
   logo: "full" | "mark" | "none";
   theme?: ThemeId;
   accent?: "teal" | "light" | "navy" | "white";
-  pattern: "rings" | "grid" | "none" | string; // أو معرف خلفية
+  pattern: "auto" | "rings" | "grid" | "none" | string; // auto = حسب المناسبة، أو معرف خلفية
   order?: "title-first" | "body-first";
-  image?: { src: string; zoom: number; x: number; y: number };
+  /** src: النسخة عالية الدقة للتصدير، preview: نسخة خفيفة للمعاينة */
+  image?: { src: string; preview?: string; zoom: number; x: number; y: number };
 }
 
 export interface Draft {

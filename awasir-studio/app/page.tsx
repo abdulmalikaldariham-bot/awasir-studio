@@ -3,9 +3,9 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { Search } from "lucide-react";
 import type { Template } from "@/lib/types";
-import { activeTemplates, sampleValues, useLibrary } from "@/lib/library";
-import { HexRings } from "@/components/design/parts";
-import { Preview } from "@/components/design/Preview";
+import { activeTemplates, useLibrary } from "@/lib/library";
+import { HexRings } from "@/components/design/hex";
+import { Thumb } from "@/components/ui/Thumb";
 import { templatesCount } from "@/lib/plural";
 import { TemplateCard, TemplateModal } from "@/components/ui/TemplateCard";
 
@@ -57,7 +57,7 @@ export default function Home() {
               <section>
                 <h2 className="text-xl font-bold text-navy mb-5">الأكثر استخداماً</h2>
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5">
-                  {featured.map((t) => <TemplateCard key={t.id} t={t} onOpen={setOpen} showCategory />)}
+                  {featured.map((t, i) => <TemplateCard key={t.id} t={t} onOpen={setOpen} showCategory priority={i < 3} />)}
                 </div>
               </section>
             )}
@@ -70,7 +70,7 @@ export default function Home() {
                   return (
                     <Link key={c.id} href={`/c/${c.id}`} className="group flex items-center gap-4 rounded-2xl bg-white p-3 ring-1 ring-line transition hover:ring-teal hover:shadow-lift focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal">
                       <div className="w-24 shrink-0 overflow-hidden rounded-xl bg-mist-100">
-                        {first ? <Preview template={first} values={sampleValues(first, library)} styleIndex={0} size="portrait" className="w-full" /> : <div className="aspect-[4/5]" />}
+                        {first ? <Thumb t={first} small /> : <div className="aspect-[4/5]" />}
                       </div>
                       <div className="min-w-0">
                         <p className="font-bold text-navy text-[17px] leading-7">{c.name}</p>

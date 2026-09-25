@@ -7,6 +7,24 @@ export type ExportQuality = "normal" | "high";
 
 let fontCSS: Promise<string> | null = null;
 
+/**
+ * المعاينة تستخدم صوراً خفيفة، وقبل الالتقاط نبدّلها بنسخ الدقة الكاملة (data-hires)
+ * ثم نعيدها بعد التصدير. فالمعاينة سريعة والملف النهائي بأعلى جودة.
+ */
+async function withHiRes<T>(node: HTMLElement, fn: () => Promise<T>): Promise<T> {
+  const imgs = Array.from(node.querySelectorAll<HTMLImageElement>("img[data-hires]"));
+  const saved = imgs.map((i) => i.src);
+  try {
+    await Promise.all(imgs.map(async (i) => {
+      i.src = i.dataset.hires!;
+      try { await i.decode(); } catch { /* نكمل بالصورة المتاحة */ }
+    }));
+    return await fn();
+  } finally {
+    imgs.forEach((i, k) => { i.src = saved[k]; });
+  }
+}
+
 async function render(node: HTMLElement, quality: ExportQuality, bg?: string) {
   await document.fonts.ready;
   // الخطوط تُضمَّن داخل الصورة، فيبقى النص العربي بنفس شكل المعاينة تماماً
@@ -21,8 +39,8 @@ async function render(node: HTMLElement, quality: ExportQuality, bg?: string) {
     height: node.offsetHeight,
     style: { transform: "none" },
   };
-  // الرسم الأول يسخّن الصور والخطوط في بعض المتصفحات (سفاري خصوصاً)
-  await toCanvas(node, opts);
+  // رسم تمهيدي بدقة صغيرة جداً يسخّن الصور والخطوط في بعض المتصفحات (سفاري خصوصاً)
+  await toCanvas(node, { ...opts, pixelRatio: 0.2 });
   return toCanvas(node, opts);
 }
 
@@ -33,17 +51,21 @@ function download(url: string, name: string) {
   document.body.appendChild(a);
   a.click();
   a.remove();
+  if (url.startsWith("blob:")) setTimeout(() => URL.revokeObjectURL(url), 4000);
 }
+
+const toBlob = (c: HTMLCanvasElement, type: string, q?: number) =>
+  new Promise<Blob>((res, rej) => c.toBlob((b) => (b ? res(b) : rej(new Error("toBlob failed"))), type, q));
 
 export async function exportDesign(node: HTMLElement, format: ExportFormat, quality: ExportQuality, size: SizeId, baseName: string) {
   const name = baseName.replace(/[\\/:*?"<>|]+/g, "").trim() || "تصميم-أواصر";
-  const canvas = await render(node, quality, format === "png" ? undefined : "#FFFFFF");
+  const canvas = await withHiRes(node, () => render(node, quality, format === "png" ? undefined : "#FFFFFF"));
   if (format === "png") {
-    download(canvas.toDataURL("image/png"), `${name}.png`);
+    download(URL.createObjectURL(await toBlob(canvas, "image/png")), `${name}.png`);
     return;
   }
   if (format === "jpg") {
-    download(canvas.toDataURL("image/jpeg", quality === "high" ? 0.95 : 0.9), `${name}.jpg`);
+    download(URL.createObjectURL(await toBlob(canvas, "image/jpeg", quality === "high" ? 0.95 : 0.9)), `${name}.jpg`);
     return;
   }
   const { jsPDF } = await import("jspdf");

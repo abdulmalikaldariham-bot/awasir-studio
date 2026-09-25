@@ -1,14 +1,14 @@
 "use client";
-import { useId, useLayoutEffect, useMemo, useRef, type CSSProperties, type ReactNode } from "react";
+import { memo, useLayoutEffect, useMemo, useRef, type CSSProperties, type ReactNode } from "react";
 import QRCode from "qrcode";
 import type { Brand, Custom, LogoFile, ThemeId } from "@/lib/types";
 import type { ResolvedContent } from "@/lib/format";
 
 // ---------- الشعار ----------
 export function logoSrc(brand: Brand, file: LogoFile) {
-  return brand.logos?.[file] || `/brand/${file}.svg`;
+  return brand.logos?.[file] || `/assets/awaser/${file}.svg`;
 }
-export function Logo({ brand, kind, theme, layout, className, style }: {
+export const Logo = memo(function Logo({ brand, kind, theme, layout, className, style }: {
   brand: Brand; kind: Custom["logo"]; theme: ThemeId; layout: "vertical" | "horizontal";
   className?: string; style?: CSSProperties;
 }) {
@@ -18,47 +18,11 @@ export function Logo({ brand, kind, theme, layout, className, style }: {
     ? (theme === "teal" ? "mark-white" : "mark")
     : (`${layout}-${tone}` as LogoFile);
   // eslint-disable-next-line @next/next/no-img-element
-  return <img src={logoSrc(brand, file)} alt="أواصر" className={className} style={style} draggable={false} />;
-}
+  return <img src={logoSrc(brand, file)} alt="أواصر" className={className} style={style} draggable={false} decoding="async" />;
+});
 
 // ---------- النمط السداسي ----------
-function hexPath(cx: number, cy: number, r: number) {
-  const h = r * 0.866;
-  return `M${cx + r} ${cy}L${cx + r / 2} ${cy + h}L${cx - r / 2} ${cy + h}L${cx - r} ${cy}L${cx - r / 2} ${cy - h}L${cx + r / 2} ${cy - h}Z`;
-}
-
-/** حلقات سداسية متداخلة كما في دليل الهوية */
-export function HexRings({ count = 7, gap = 1, stroke, width = 1.2, className, style }: {
-  count?: number; gap?: number; stroke: string; width?: number; className?: string; style?: CSSProperties;
-}) {
-  const d = useMemo(() => {
-    const parts: string[] = [];
-    for (let i = 1; i <= count; i++) parts.push(hexPath(100, 100, (100 / count) * i * gap));
-    return parts.join("");
-  }, [count, gap]);
-  return (
-    <svg viewBox="-2 -2 204 204" className={className} style={style} aria-hidden>
-      <path d={d} fill="none" stroke={stroke} strokeWidth={width} vectorEffect="non-scaling-stroke" />
-    </svg>
-  );
-}
-
-/** شبكة خلايا سداسية هادئة تغطي الخلفية */
-export function HexGrid({ stroke, cell, opacity = 1 }: { stroke: string; cell: number; opacity?: number }) {
-  const w = cell * 3, h = cell * 1.732;
-  const d = `${hexPath(cell, h / 2, cell)}M${cell * 2.5} ${h}L${cell * 3} ${h}M${cell * 2.5} 0L${cell * 3} 0`;
-  const id = "hg" + useId().replace(/[^a-zA-Z0-9]/g, "");
-  return (
-    <svg className="aw-fill" aria-hidden style={{ opacity }}>
-      <defs>
-        <pattern id={id} width={w} height={h} patternUnits="userSpaceOnUse">
-          <path d={d} fill="none" stroke={stroke} strokeWidth={1.4} />
-        </pattern>
-      </defs>
-      <rect width="100%" height="100%" fill={`url(#${id})`} />
-    </svg>
-  );
-}
+export { HexRings, HexGrid } from "./hex";
 
 // ---------- أيقونات التفاصيل ----------
 const ICONS: Record<string, string> = {
@@ -104,14 +68,21 @@ export function QR({ value, fg = "#1C3F4E" }: { value: string; fg?: string }) {
 }
 
 // ---------- الصورة ----------
-export function Photo({ img, className, style }: { img: NonNullable<Custom["image"]>; className?: string; style?: CSSProperties }) {
+/**
+ * المعاينة تعرض النسخة الخفيفة (preview)، ونسخة الدقة الكاملة محفوظة في data-hires
+ * ويبدّلها التصدير قبل الالتقاط مباشرة. فتبقى المعاينة سريعة والتصدير بأعلى جودة.
+ */
+export const Photo = memo(function Photo({ img, className, style }: { img: NonNullable<Custom["image"]>; className?: string; style?: CSSProperties }) {
+  const light = img.preview ?? img.src;
   return (
     <div className={`aw-photo ${className ?? ""}`} style={style}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={img.src}
+        src={light}
+        data-hires={img.preview && img.preview !== img.src ? img.src : undefined}
         alt=""
         draggable={false}
+        decoding="async"
         style={{
           objectPosition: `${img.x}% ${img.y}%`,
           transform: `scale(${img.zoom})`,
@@ -120,45 +91,66 @@ export function Photo({ img, className, style }: { img: NonNullable<Custom["imag
       />
     </div>
   );
-}
+});
 
 // ---------- ملاءمة النص تلقائياً ----------
-/** يصغّر الخطوط تدريجياً حتى يتسع المحتوى في مساحته، بدل أن يخرج عن التصميم */
+/**
+ * يصغّر الخطوط حتى يتسع المحتوى في مساحته، بدل أن يخرج عن التصميم.
+ * بحث ثنائي (٦ قياسات كحد أقصى) بدل التصغير خطوة خطوة، فالكتابة تبقى سلسة.
+ */
 export function AutoFit({ children, deps, className, style }: { children: ReactNode; deps: string; className?: string; style?: CSSProperties }) {
   const ref = useRef<HTMLDivElement>(null);
   useLayoutEffect(() => {
     const el = ref.current;
     if (!el) return;
+    const fits = (f: number) => {
+      el.style.setProperty("--fit", String(f));
+      return el.scrollHeight <= el.clientHeight + 1;
+    };
     const run = () => {
-      let f = 1;
-      el.style.setProperty("--fit", "1");
-      while (f > 0.5 && el.scrollHeight > el.clientHeight + 1) {
-        f = Math.round((f - 0.04) * 100) / 100;
-        el.style.setProperty("--fit", String(f));
+      if (fits(1)) { el.dataset.fit = "1"; return; }
+      let lo = 0.5, hi = 1;
+      for (let i = 0; i < 6; i++) {
+        const mid = (lo + hi) / 2;
+        if (fits(mid)) lo = mid; else hi = mid;
       }
+      const f = Math.floor(lo * 100) / 100;
+      el.style.setProperty("--fit", String(f));
       el.dataset.fit = String(f);
     };
     run();
     let alive = true;
-    document.fonts?.ready.then(() => alive && run());
+    if (document.fonts && document.fonts.status !== "loaded") document.fonts.ready.then(() => alive && run());
     return () => { alive = false; };
   }, [deps]);
   return <div ref={ref} className={`aw-fit ${className ?? ""}`} style={style}>{children}</div>;
 }
 
 // ---------- كومة المحتوى ----------
-export function Ornament() {
+export type OrnKind = "hex" | "diamond" | "star" | "dots" | "triangles" | "bar" | "none";
+
+/** الفاصل بين العنوان والنص: يتغير شكله حسب المناسبة */
+export function Ornament({ kind = "hex" }: { kind?: OrnKind }) {
+  if (kind === "none") return null;
+  if (kind === "bar") return <div className="aw-orn aw-orn-bar" aria-hidden><span /></div>;
+  const mid = {
+    hex: <svg viewBox="0 0 20 18"><path d="M19 9L14.5 16.8H5.5L1 9L5.5 1.2H14.5Z" fill="none" stroke="currentColor" strokeWidth="1.6" /></svg>,
+    diamond: <svg viewBox="0 0 40 16"><path d="M20 1L27 8L20 15L13 8Z" fill="currentColor" /><path d="M6 8L9 5L12 8L9 11ZM28 8L31 5L34 8L31 11Z" fill="currentColor" opacity=".6" /></svg>,
+    star: <svg viewBox="0 0 20 20"><path d="M10 0Q11.6 8.4 20 10Q11.6 11.6 10 20Q8.4 11.6 0 10Q8.4 8.4 10 0Z" fill="currentColor" /></svg>,
+    dots: <svg viewBox="0 0 40 10"><circle cx="8" cy="5" r="2.4" fill="currentColor" opacity=".5" /><circle cx="20" cy="5" r="3.4" fill="currentColor" /><circle cx="32" cy="5" r="2.4" fill="currentColor" opacity=".5" /></svg>,
+    triangles: <svg viewBox="0 0 44 12"><path d="M2 12L8 2L14 12ZM16 12L22 0L28 12ZM30 12L36 2L42 12Z" fill="currentColor" /></svg>,
+  }[kind];
   return (
-    <div className="aw-orn" aria-hidden>
+    <div className={`aw-orn aw-orn-${kind}`} aria-hidden>
       <span />
-      <svg viewBox="0 0 20 18"><path d="M19 9L14.5 16.8H5.5L1 9L5.5 1.2H14.5Z" fill="none" stroke="currentColor" strokeWidth="1.6" /></svg>
+      {mid}
       <span />
     </div>
   );
 }
 
 export function Stack({ c, hidden, ornament, image }: {
-  c: ResolvedContent; hidden: Set<string>; ornament?: boolean; image?: ReactNode; dark?: boolean;
+  c: ResolvedContent; hidden: Set<string>; ornament?: OrnKind; image?: ReactNode; dark?: boolean;
 }) {
   const show = (k: keyof ResolvedContent) => !hidden.has(k) && Boolean(c[k] && (Array.isArray(c[k]) ? (c[k] as unknown[]).length : true));
   const len = c.title.replace(/\s+/g, "").length;
@@ -178,7 +170,7 @@ export function Stack({ c, hidden, ornament, image }: {
       <div className="aw-main">
         {image}
         {show("eyebrow") && <p className="aw-eyebrow">{c.eyebrow}</p>}
-        {c.order === "body-first" ? (<>{bodyBlock}{titleBlock}</>) : (<>{titleBlock}{ornament && hasTitle && bodyBlock && <Ornament />}{bodyBlock}</>)}
+        {c.order === "body-first" ? (<>{bodyBlock}{titleBlock}</>) : (<>{titleBlock}{ornament && hasTitle && bodyBlock && <Ornament kind={ornament} />}{bodyBlock}</>)}
       </div>
       {aside && (
         <div className="aw-aside">

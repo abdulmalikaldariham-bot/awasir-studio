@@ -4,7 +4,7 @@ import { ArrowDown, ArrowUp, Copy, Download, EyeOff, Pencil, Plus, Trash2, Uploa
 import type { Brand, Category, Library, LogoFile, PresetGroup, Template, Tone } from "@/lib/types";
 import { useLibrary } from "@/lib/library";
 import { getUsage } from "@/lib/drafts";
-import { readFileAsDataURL, readImage } from "@/lib/image";
+import { readFileAsDataURL, readImageSized } from "@/lib/image";
 import { logoSrc } from "@/components/design/parts";
 import { TemplateEditor } from "./TemplateEditor";
 
@@ -288,7 +288,7 @@ function BackgroundsTab({ library, commit }: TabProps) {
         setBusy(true);
         const added = [];
         for (const f of files) {
-          try { added.push({ id: `bg-${Date.now().toString(36)}-${added.length}`, name: f.name.replace(/\.[^.]+$/, ""), src: await readImage(f, 1600) }); }
+          try { added.push({ id: `bg-${Date.now().toString(36)}-${added.length}`, name: f.name.replace(/\.[^.]+$/, ""), src: await readImageSized(f, 1600) }); }
           catch { alert(`تعذرت قراءة ${f.name}`); }
         }
         commit({ ...library, backgrounds: [...library.backgrounds, ...added] });

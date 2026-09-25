@@ -1,10 +1,17 @@
 "use client";
 import { useState } from "react";
-import { Download, Loader2 } from "lucide-react";
+import { Download, Loader2, FileImage, FileText, Image as ImageIcon, CheckCircle2 } from "lucide-react";
 import { exportDesign, type ExportFormat, type ExportQuality } from "@/lib/export";
 import { SIZES } from "@/lib/design";
 import type { SizeId } from "@/lib/types";
 
+const FORMATS: { id: ExportFormat; name: string; note: string; Icon: typeof FileImage }[] = [
+  { id: "png", name: "PNG", note: "أعلى وضوح للنشر", Icon: FileImage },
+  { id: "jpg", name: "JPG", note: "حجم أصغر للواتساب", Icon: ImageIcon },
+  { id: "pdf", name: "PDF", note: "للطباعة والمشاركة", Icon: FileText },
+];
+
+/** قسم تحميل التصميم: آخر خطوة في رحلة الإنشاء */
 export function ExportBar({ getNode, size, name, missing, onExported }: {
   getNode: () => HTMLElement | null; size: SizeId; name: string; missing: string[]; onExported?: () => void;
 }) {
@@ -30,37 +37,45 @@ export function ExportBar({ getNode, size, name, missing, onExported }: {
   };
 
   return (
-    <div className="panel p-4">
+    <div className="mt-3 rounded-2xl bg-navy p-4 sm:p-5 text-white shadow-lift">
       {missing.length > 0 && (
-        <p className="mb-3 rounded-lg bg-amber-50 text-amber-800 text-sm px-3 py-2 leading-6">
+        <p className="mb-4 rounded-lg bg-amber-50 text-amber-800 text-sm px-3 py-2 leading-6">
           حقول مطلوبة لم تُكتب بعد: {missing.join("، ")}
         </p>
       )}
-      <div className="flex flex-wrap items-center gap-3">
-        <Seg value={format} onChange={setFormat} options={[["png", "PNG"], ["jpg", "JPG"], ["pdf", "PDF"]]} label="صيغة الملف" />
-        <Seg value={quality} onChange={setQuality} options={[["normal", "جودة عادية"], ["high", "جودة عالية"]]} label="الجودة" />
-        <button type="button" onClick={run} disabled={busy} className="btn-primary sm:ms-auto min-w-40">
-          {busy ? <Loader2 size={18} className="animate-spin" /> : <Download size={18} />}
-          {busy ? "جارٍ التجهيز…" : "تحميل التصميم"}
-        </button>
+      <p className="text-sm font-semibold text-white/75 mb-2">صيغة الملف</p>
+      <div role="radiogroup" aria-label="صيغة الملف" className="grid grid-cols-3 gap-2">
+        {FORMATS.map(({ id, name: n, note, Icon }) => (
+          <button key={id} type="button" role="radio" aria-checked={format === id} onClick={() => setFormat(id)}
+            className={`rounded-xl p-3 text-start ring-1 transition ${format === id ? "bg-white text-navy ring-white" : "bg-white/5 ring-white/20 hover:ring-white/50"}`}>
+            <Icon size={18} className={format === id ? "text-teal" : "text-mist"} />
+            <span className="block font-bold mt-1">{n}</span>
+            <span className={`block text-xs leading-5 ${format === id ? "text-ink-soft" : "text-white/65"}`}>{note}</span>
+          </button>
+        ))}
       </div>
-      <p className="text-xs text-ink-faint mt-2 tabular-nums" dir="rtl">
-        {format === "pdf" && size === "a4" ? "ملف PDF بمقاس A4 جاهز للطباعة" : `${spec.w * px} × ${spec.h * px} بكسل`}
-        {msg && <span className={`ms-3 font-semibold ${msg.ok ? "text-teal" : "text-amber-700"}`}>{msg.text}</span>}
+      <p className="text-sm font-semibold text-white/75 mt-4 mb-2">الجودة</p>
+      <div role="radiogroup" aria-label="الجودة" className="inline-flex rounded-xl bg-white/10 p-1">
+        {([["high", "عالية (مضاعفة)"], ["normal", "عادية"]] as const).map(([id, n]) => (
+          <button key={id} type="button" role="radio" aria-checked={quality === id} onClick={() => setQuality(id)}
+            className={`h-9 px-3.5 rounded-lg text-sm font-semibold transition ${quality === id ? "bg-white text-navy" : "text-white/80 hover:text-white"}`}>
+            {n}
+          </button>
+        ))}
+      </div>
+      <p className="text-xs text-white/60 mt-2 tabular-nums">
+        {format === "pdf" && size === "a4" ? "ملف PDF بمقاس A4 جاهز للطباعة" : `${spec.name}: ${spec.w * px} × ${spec.h * px} بكسل`}
       </p>
-    </div>
-  );
-}
-
-function Seg<T extends string>({ value, onChange, options, label }: { value: T; onChange: (v: T) => void; options: [T, string][]; label: string }) {
-  return (
-    <div role="radiogroup" aria-label={label} className="inline-flex rounded-xl bg-mist-50 ring-1 ring-line p-1">
-      {options.map(([id, name]) => (
-        <button key={id} type="button" role="radio" aria-checked={value === id} onClick={() => onChange(id)}
-          className={`h-9 px-3 rounded-lg text-sm font-semibold transition ${value === id ? "bg-white text-navy shadow-sm ring-1 ring-line" : "text-ink-soft hover:text-navy"}`}>
-          {name}
-        </button>
-      ))}
+      <button type="button" onClick={run} disabled={busy}
+        className="btn w-full mt-4 h-12 text-base bg-[#8CC0C7] text-navy hover:bg-white">
+        {busy ? <Loader2 size={20} className="animate-spin" /> : <Download size={20} />}
+        {busy ? "جارٍ تجهيز الملف…" : `تحميل التصميم (${FORMATS.find((f) => f.id === format)!.name})`}
+      </button>
+      {msg && (
+        <p className={`mt-3 text-sm font-semibold flex items-center gap-1.5 ${msg.ok ? "text-mist" : "text-amber-300"}`} role="status">
+          {msg.ok && <CheckCircle2 size={16} />}{msg.text}
+        </p>
+      )}
     </div>
   );
 }

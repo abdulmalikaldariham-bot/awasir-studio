@@ -11,7 +11,7 @@ export default {
         line: "#D9E6E8",
         ink: { DEFAULT: "#1C3F4E", soft: "#4E6B75", faint: "#7D949B" },
       },
-      fontFamily: { sans: ["Cairo", "system-ui", "sans-serif"] },
+      fontFamily: { sans: ["Cairo Variable", "Cairo", "system-ui", "sans-serif"] },
       boxShadow: { lift: "0 1px 2px rgba(28,63,78,.06), 0 8px 24px -12px rgba(28,63,78,.18)" },
     },
   },

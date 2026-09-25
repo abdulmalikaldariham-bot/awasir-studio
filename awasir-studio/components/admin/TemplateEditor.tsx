@@ -5,6 +5,8 @@ import type { DetailSlot, Field, FieldType, IconName, Library, SizeId, StatSlot,
 import { SIZES, SIZE_ORDER, STYLE_INFO, THEME_NAMES } from "@/lib/design";
 import { sampleValues } from "@/lib/library";
 import { Preview } from "@/components/design/Preview";
+import { OCCASIONS, OCCASION_ORDER, occasionOf, type ArtId, type OccasionId } from "@/lib/occasions";
+import { ART_NAMES } from "@/components/design/art";
 
 const FIELD_TYPES: [FieldType, string][] = [["text", "نص قصير"], ["textarea", "نص طويل"], ["date", "تاريخ"], ["select", "اختيار"], ["url", "رابط"], ["number", "رقم"]];
 const ICONS: IconName[] = ["calendar", "clock", "pin", "building", "user", "users", "link", "info", "phone", "star", "book", "flag"];
@@ -46,6 +48,18 @@ export function TemplateEditor({ initial, library, onSave, onCancel }: {
             <L label="التصنيف">
               <select className="input" value={t.category} onChange={(e) => set({ category: e.target.value })}>
                 {library.categories.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}
+              </select>
+            </L>
+            <L label="طابع المناسبة البصري">
+              <select className="input" value={t.occasion ?? ""} onChange={(e) => set({ occasion: (e.target.value || undefined) as OccasionId | undefined })}>
+                <option value="">حسب التصنيف ({occasionOf({ category: t.category }).name})</option>
+                {OCCASION_ORDER.map((o) => <option key={o} value={o}>{OCCASIONS[o].name}</option>)}
+              </select>
+            </L>
+            <L label="العنصر الرئيسي">
+              <select className="input" value={t.art ?? ""} onChange={(e) => set({ art: (e.target.value || undefined) as ArtId | undefined })}>
+                <option value="">حسب المناسبة ({ART_NAMES[occasionOf(t).hero]})</option>
+                {(Object.keys(ART_NAMES) as ArtId[]).map((a) => <option key={a} value={a}>{ART_NAMES[a]}</option>)}
               </select>
             </L>
             <L label="الصورة">

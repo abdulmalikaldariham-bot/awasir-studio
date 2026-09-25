@@ -1,13 +1,14 @@
 "use client";
 import { useRef, useState } from "react";
-import { ImagePlus, RotateCcw, Trash2 } from "lucide-react";
+import { ImagePlus, Loader2, RotateCcw, Trash2 } from "lucide-react";
 import type { Custom, Library, Template, ThemeId } from "@/lib/types";
 import { STYLE_INFO, THEME_NAMES, accentOptions, palette } from "@/lib/design";
-import { readImage } from "@/lib/image";
+import { fmtSize, readImage } from "@/lib/image";
+import { occasionOf } from "@/lib/occasions";
 
 const SLOT_NAMES: Record<string, string> = {
   eyebrow: "العنوان الصغير", subtitle: "السطر الثانوي", body: "النص", details: "التفاصيل",
-  stats: "الأرقام", note: "الملاحظات", qr: "رمز QR", footer: "التوقيع", pattern: "النمط السداسي", image: "الصورة",
+  stats: "الأرقام", note: "الملاحظات", qr: "رمز QR", footer: "التوقيع", pattern: "النمط السداسي", decor: "زخارف المناسبة", image: "الصورة",
 };
 
 export function Customize({ template, styleIndex, custom, onChange, library }: {
@@ -17,7 +18,7 @@ export function Customize({ template, styleIndex, custom, onChange, library }: {
   const opt = template.styles[styleIndex];
   const theme: ThemeId = custom.theme ?? opt.theme ?? STYLE_INFO[opt.style].defaultTheme;
   const slotKeys = Object.keys(SLOT_NAMES).filter((k) => {
-    if (k === "pattern") return true;
+    if (k === "pattern" || k === "decor") return true;
     if (k === "image") return template.image !== "none" && custom.image;
     if (k === "qr") return Boolean(template.slots.qr);
     const v = template.slots[k as keyof Template["slots"]];
@@ -53,8 +54,8 @@ export function Customize({ template, styleIndex, custom, onChange, library }: {
 
       <Group title="الخلفية">
         <div className="flex flex-wrap gap-2">
-          {[["rings", "حلقات سداسية"], ["grid", "شبكة سداسية"], ["none", "بدون نمط"]].map(([id, name]) => (
-            <button key={id} type="button" onClick={() => set({ pattern: id })} className={`chip ${custom.pattern === id ? "chip-on" : ""}`}>{name}</button>
+          {[["auto", `حسب المناسبة (${occasionOf(template).name})`], ["rings", "حلقات سداسية"], ["grid", "شبكة سداسية"], ["none", "بدون نمط"]].map(([id, name]) => (
+            <button key={id} type="button" onClick={() => set({ pattern: id })} className={`chip ${(custom.pattern || "auto") === id ? "chip-on" : ""}`}>{name}</button>
           ))}
         </div>
         {library.backgrounds.length > 0 && (
@@ -110,7 +111,7 @@ export function Customize({ template, styleIndex, custom, onChange, library }: {
         </div>
       </Group>
 
-      <button type="button" className="btn-ghost btn-sm" onClick={() => onChange({ hidden: [], titleScale: 1, bodyScale: 1, logo: "full", pattern: "rings", image: custom.image })}>
+      <button type="button" className="btn-ghost btn-sm" onClick={() => onChange({ hidden: [], titleScale: 1, bodyScale: 1, logo: "full", pattern: "auto", image: custom.image })}>
         <RotateCcw size={16} />إعادة التخصيص الافتراضي
       </button>
     </div>
@@ -136,25 +137,34 @@ function ImageControls({ custom, set, library, recommended }: { custom: Custom; 
   const input = useRef<HTMLInputElement>(null);
   const [err, setErr] = useState("");
   const [busy, setBusy] = useState(false);
+  const [saving, setSaving] = useState("");
   const img = custom.image;
   const pick = async (file?: File) => {
     if (!file) return;
-    setErr(""); setBusy(true);
-    try { set({ image: { src: await readImage(file), zoom: 1, x: 50, y: 50 }, hidden: custom.hidden.filter((h) => h !== "image") }); }
+    setErr(""); setSaving(""); setBusy(true);
+    try {
+      // المعالجة في الخلفية: نسخة للتصدير ونسخة خفيفة للمعاينة
+      const r = await readImage(file);
+      set({ image: { src: r.src, preview: r.preview, zoom: 1, x: 50, y: 50 }, hidden: custom.hidden.filter((h) => h !== "image") });
+      if (r.before > r.after * 1.2) setSaving(`حُسّنت الصورة تلقائياً: ${fmtSize(r.before)} ← ${fmtSize(r.after)}`);
+    }
     catch (e) { setErr(e instanceof Error ? e.message : "تعذر رفع الصورة"); }
     finally { setBusy(false); }
   };
   return (
     <Group title="الصورة">
-      {!img && <p className="text-sm text-ink-soft mb-3">{recommended ? "هذا القالب يظهر أجمل مع صورة." : "الصورة اختيارية."} بدون صورة يظهر نمط أواصر السداسي.</p>}
-      <div className="flex flex-wrap gap-2">
-        <button type="button" className="btn-teal btn-sm" onClick={() => input.current?.click()} disabled={busy}>
-          <ImagePlus size={16} />{busy ? "جارٍ التجهيز…" : img ? "استبدال الصورة" : "رفع صورة"}
+      {!img && <p className="text-sm text-ink-soft mb-3">{recommended ? "هذا القالب يظهر أجمل مع صورة." : "الصورة اختيارية."} بدون صورة يظهر عنصر المناسبة ونمط أواصر.</p>}
+      <div className="flex flex-wrap items-center gap-2">
+        <button type="button" className="btn-teal btn-sm" onClick={() => input.current?.click()} disabled={busy} aria-busy={busy}>
+          {busy ? <Loader2 size={16} className="animate-spin" /> : <ImagePlus size={16} />}
+          {busy ? "جارٍ تجهيز الصورة…" : img ? "استبدال الصورة" : "رفع صورة"}
         </button>
-        {img && <button type="button" className="btn-ghost btn-sm" onClick={() => set({ image: undefined })}><Trash2 size={16} />إزالة</button>}
+        {img && !busy && <button type="button" className="btn-ghost btn-sm" onClick={() => { set({ image: undefined }); setSaving(""); }}><Trash2 size={16} />إزالة</button>}
       </div>
+      {busy && <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-mist-100"><div className="skeleton h-full w-full" /></div>}
       <input ref={input} type="file" accept="image/*" className="hidden" onChange={(e) => { pick(e.target.files?.[0]); e.target.value = ""; }} />
       {err && <p className="text-sm text-amber-700 mt-2">{err}</p>}
+      {saving && <p className="text-xs text-teal mt-2">{saving}</p>}
       {library.backgrounds.length > 0 && !img && (
         <>
           <p className="text-xs font-semibold text-ink-soft mt-4 mb-2">أو اختر صورة معتمدة</p>
