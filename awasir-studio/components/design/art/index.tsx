@@ -3,14 +3,14 @@
 import type { ComponentType } from "react";
 import type { ArtId } from "@/lib/occasions";
 import type { ArtProps } from "./base";
-import { Bisht, Dallah, RingsPair, Seal } from "./wedding";
+import { Dallah, RingsPair, Seal } from "./wedding";
 import { Crescent, Lantern, Mihrab, QuranStand } from "./ramadan";
 import { Burst, Gift, Mosque, Star8 } from "./eid";
 import { Briefcase, Cap, Certificate, CradleStars, Diploma, Medal, MoonClouds, Rosette, Steps } from "./milestones";
 import { Bell, Calendar, Chart, Compass, Hex, Majlis, Megaphone, Mic, Mountains, News, Papers, Pin, Podium, Screen, Tent, Trophy } from "./gathering";
 
 export const ART: Record<ArtId, ComponentType<ArtProps>> = {
-  bisht: Bisht, dallah: Dallah, seal: Seal, "rings-pair": RingsPair,
+  dallah: Dallah, seal: Seal, "rings-pair": RingsPair,
   lantern: Lantern, crescent: Crescent, mihrab: Mihrab, "quran-stand": QuranStand,
   gift: Gift, burst: Burst, mosque: Mosque, star8: Star8,
   "moon-clouds": MoonClouds, "cradle-stars": CradleStars,
@@ -25,7 +25,7 @@ export const ART: Record<ArtId, ComponentType<ArtProps>> = {
 };
 
 export const ART_NAMES: Record<ArtId, string> = {
-  bisht: "البشت", dallah: "الدلة والفنجال", seal: "الختم", "rings-pair": "الخاتمان",
+  dallah: "الدلة والفنجال", seal: "الختم", "rings-pair": "الخاتمان",
   lantern: "الفانوس", crescent: "الهلال", mihrab: "المحراب", "quran-stand": "الرحل والمصحف",
   gift: "الهدايا", burst: "إشراقة", mosque: "أفق المسجد", star8: "النجمة الثمانية",
   "moon-clouds": "القمر والغيوم", "cradle-stars": "الهلال والنجوم",

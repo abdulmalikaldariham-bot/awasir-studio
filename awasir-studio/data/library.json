@@ -236,7 +236,7 @@
    ],
    "image": "optional",
    "occasion": "wedding",
-   "art": "bisht"
+   "art": "seal"
   },
   {
    "id": "wedding-announce",
@@ -505,7 +505,7 @@
    ],
    "image": "optional",
    "occasion": "wedding",
-   "art": "bisht"
+   "art": "rings-pair"
   },
   {
    "id": "thanks-after",
