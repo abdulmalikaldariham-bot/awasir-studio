@@ -9,7 +9,7 @@ export type OccasionId =
 
 /** العناصر البصرية المتاحة (رسوم متجهة داخل الكود، بلا صور خارجية) */
 export type ArtId =
-  | "bisht" | "dallah" | "seal" | "rings-pair"
+  | "dallah" | "seal" | "rings-pair"
   | "lantern" | "crescent" | "mihrab" | "quran-stand"
   | "gift" | "burst" | "mosque" | "star8"
   | "moon-clouds" | "cradle-stars"
@@ -56,7 +56,7 @@ const GOLD_DARK = "#9A7A3A";
 export const OCCASIONS: Record<OccasionId, Occasion> = {
   wedding: {
     id: "wedding", name: "الزواج", gold: GOLD, goldOnLight: GOLD_DARK,
-    hero: "bisht", emblem: "rings-pair", hang: "none", ground: "none", sprinkle: "none",
+    hero: "seal", emblem: "rings-pair", hang: "none", ground: "none", sprinkle: "none",
     frame: "arch", title: "regal", pattern: "rings", deep: "#183845", paper: "#F7F4EC",
   },
   ramadan: {
