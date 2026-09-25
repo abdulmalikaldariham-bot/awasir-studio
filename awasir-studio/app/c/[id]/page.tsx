@@ -35,7 +35,7 @@ export default function CategoryPage({ params }: { params: Promise<{ id: string 
         </div>
       ) : (
         <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
-          {list.map((t) => <TemplateCard key={t.id} t={t} onOpen={setOpen} />)}
+          {list.map((t, i) => <TemplateCard key={t.id} t={t} onOpen={setOpen} priority={i < 4} />)}
         </div>
       )}
       <TemplateModal t={open} onClose={() => setOpen(null)} />
