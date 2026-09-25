@@ -5,7 +5,7 @@
   position: relative;
   overflow: hidden;
   direction: rtl;
-  font-family: "Cairo", sans-serif;
+  font-family: "Cairo Variable", "Cairo", sans-serif;
   color: var(--fg);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -194,3 +194,118 @@
 /* ---------- المعاينات المصغرة ---------- */
 .aw-thumb { position: relative; overflow: hidden; flex: none; }
 .aw-thumb > div { position: absolute; top: 0; right: 0; }
+
+/* =====================================================================
+   طبقة المناسبة: هوية أواصر ثابتة، وروح المناسبة في الزخارف وإبراز العنوان
+   ===================================================================== */
+.aw { --ot: 1; }
+.aw-occ { pointer-events: none; }
+.aw-occ svg { overflow: visible; }
+.aw-orn { color: var(--orn); }
+.aw-ico { color: var(--orn); }
+.aw-minimal .aw-eyebrow::before, .aw[data-style="minimal"][data-align="center"] .aw-eyebrow::after { background: var(--orn); }
+.aw-title { font-size: calc(var(--u) * 8.4 * var(--ts) * var(--ot) * var(--fit) * var(--tscale)); }
+
+/* الفواصل */
+.aw-orn-diamond svg { width: calc(var(--u) * 5.4); }
+.aw-orn-star svg { width: calc(var(--u) * 2.8); }
+.aw-orn-dots svg { width: calc(var(--u) * 5); }
+.aw-orn-triangles svg { width: calc(var(--u) * 6); }
+.aw-orn-bar { width: auto; }
+.aw-orn-bar span { flex: none; width: calc(var(--u) * 11); height: calc(var(--u) * 0.55); border-radius: 99px; opacity: 1; }
+.aw[data-align="start"] .aw-orn-bar { justify-content: flex-start; }
+
+/* الرمز الصغير فوق العنوان */
+.aw-emblem { width: calc(var(--u) * 10 * var(--fit)); height: calc(var(--u) * 10 * var(--fit)); color: var(--orn); flex: none; }
+
+/* العنصر الرئيسي */
+.aw-hero-corner { position: absolute; color: var(--orn); width: calc(var(--u) * 34); height: calc(var(--u) * 34); left: calc(var(--u) * 6); bottom: calc(var(--u) * 6); }
+.aw[data-corner] .aw-minimal .aw-col { padding-bottom: calc(var(--u) * 38); }
+.aw[data-corner][data-shape="tall"] .aw-hero-corner { width: calc(var(--u) * 44); height: calc(var(--u) * 44); bottom: calc(var(--u) * 12); }
+.aw[data-corner][data-shape="tall"] .aw-minimal .aw-col { padding-bottom: calc(var(--u) * 56); }
+.aw[data-corner][data-shape="square"] .aw-hero-corner { width: calc(var(--u) * 28); height: calc(var(--u) * 28); left: calc(var(--u) * 5); bottom: calc(var(--u) * 5); }
+.aw[data-corner][data-shape="square"] .aw-minimal .aw-col { padding-bottom: calc(var(--u) * 10); padding-left: calc(var(--u) * 34); }
+.aw[data-corner][data-shape="wide"] .aw-hero-corner { width: calc(var(--u) * 52); height: calc(var(--u) * 52); left: calc(var(--u) * 12); bottom: 50%; transform: translateY(50%); }
+.aw[data-corner][data-shape="wide"] .aw-minimal .aw-col { padding-bottom: calc(var(--u) * 7); padding-left: calc(var(--u) * 76); }
+.aw-hero-wm { position: absolute; color: var(--orn); opacity: .11; width: calc(var(--u) * 86); height: calc(var(--u) * 86); left: 50%; top: 52%; transform: translate(-50%, -50%); }
+.aw[data-shape="wide"] .aw-hero-wm { width: calc(var(--u) * 70); height: calc(var(--u) * 70); }
+.aw-hero-top { position: absolute; color: var(--orn); width: calc(var(--u) * 36); height: calc(var(--u) * 36); left: calc(var(--u) * 8); top: calc(var(--u) * 9); }
+.aw[data-herotop] .aw-photo-style .aw-col { padding-top: calc(var(--u) * 11); }
+.aw[data-herotop] .aw-photo-style .aw-fit { margin-top: calc(var(--u) * 34); }
+.aw[data-herotop][data-shape="tall"] .aw-hero-top { width: calc(var(--u) * 48); height: calc(var(--u) * 48); top: calc(var(--u) * 20); }
+.aw[data-herotop][data-shape="tall"] .aw-photo-style .aw-fit { margin-top: calc(var(--u) * 52); }
+.aw[data-herotop][data-shape="square"] .aw-hero-top { width: calc(var(--u) * 24); height: calc(var(--u) * 24); top: calc(var(--u) * 7); left: calc(var(--u) * 7); }
+.aw[data-herotop][data-shape="square"] .aw-photo-style .aw-fit { margin-top: calc(var(--u) * 14); }
+.aw[data-herotop][data-shape="wide"] .aw-hero-top { width: calc(var(--u) * 52); height: calc(var(--u) * 52); left: calc(var(--u) * 14); top: 50%; transform: translateY(-50%); }
+.aw[data-herotop][data-shape="wide"] .aw-photo-style .aw-fit { margin-top: 0; }
+.aw[data-herotop][data-shape="wide"] .aw-photo-style .aw-col { padding-left: calc(var(--u) * 80); }
+
+/* العناصر المعلقة */
+.aw-lantern { position: absolute; top: 0; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; color: var(--orn); }
+.aw-string { display: block; width: calc(var(--u) * 0.14); background: var(--orn); opacity: .6; }
+.aw-lantern-svg { width: calc(var(--u) * 7 * var(--k)); height: calc(var(--u) * 14.7 * var(--k)); position: relative; }
+.aw-glow { position: absolute; bottom: calc(var(--u) * 1 * var(--k)); left: 50%; transform: translateX(-50%); width: calc(var(--u) * 18 * var(--k)); height: calc(var(--u) * 18 * var(--k)); border-radius: 50%; background: radial-gradient(closest-side, var(--orn), transparent); opacity: .22; }
+.aw[data-theme="light"] .aw-glow { opacity: .14; }
+.aw[data-hang="bunting"] .aw-col { padding-top: calc(var(--u) * 17); }
+.aw[data-hang="bunting"][data-shape="tall"] .aw-col { padding-top: calc(var(--u) * 20); }
+.aw[data-hang="bunting"] .aw-card { top: calc(var(--u) * 17); }
+
+/* الشريط السفلي */
+.aw-ground { position: absolute; left: 0; bottom: 0; width: 100%; height: auto; color: var(--orn); opacity: .5; }
+.aw[data-theme="light"] .aw-ground { opacity: .42; }
+.aw[data-shape="wide"] .aw-ground { width: 56%; left: 22%; }
+.aw[data-ground="mosque"] .aw-col, .aw[data-ground="mountains"] .aw-col { padding-bottom: calc(var(--u) * 25); }
+.aw[data-ground][data-shape="tall"] .aw-col { padding-bottom: calc(var(--u) * 24); }
+.aw[data-ground][data-shape="wide"] .aw-col { padding-bottom: calc(var(--u) * 26); }
+.aw[data-ground="mosque"] .aw-card, .aw[data-ground="mountains"] .aw-card { bottom: calc(var(--u) * 20); }
+.aw-najdi { position: absolute; left: 0; bottom: calc(var(--u) * 5); width: 100%; height: calc(var(--u) * 6); }
+.aw[data-ground="najdi"] .aw-col { padding-bottom: calc(var(--u) * 15); }
+.aw[data-ground="najdi"] .aw-card { bottom: calc(var(--u) * 13); }
+.aw[data-ground="najdi"][data-style="formal"] .aw-najdi { bottom: calc(var(--u) * 6.4); width: auto; left: calc(var(--u) * 5); right: calc(var(--u) * 5); }
+
+/* الشكل الحديث: عنصر المناسبة داخل اللوحة */
+.aw-panel-rings { position: absolute; width: calc(var(--u) * 90); height: calc(var(--u) * 90); left: calc(var(--u) * -18); top: 50%; transform: translateY(-50%); }
+.aw-panel-art { position: absolute; color: var(--orn); height: 72%; width: calc(var(--u) * 46); left: calc(var(--u) * 9); top: 50%; transform: translateY(-46%); }
+.aw[data-shape="square"] .aw-panel-art { height: 80%; }
+.aw[data-shape="wide"] .aw-panel-art { width: 70%; height: 46%; left: 15%; top: auto; bottom: 14%; transform: none; }
+
+/* ---------- طريقة إبراز العنوان حسب المناسبة ---------- */
+/* الزواج: فخامة هادئة */
+.aw[data-title="regal"] .aw-eyebrow, .aw[data-title="serene"] .aw-eyebrow, .aw[data-title="festive"] .aw-eyebrow,
+.aw[data-title="honor"] .aw-eyebrow, .aw[data-title="soft"] .aw-eyebrow, .aw[data-title="warm"] .aw-eyebrow { color: var(--orn); }
+.aw[data-title="regal"] { --ot: 1.06; }
+.aw[data-title="regal"]:not([data-style="minimal"]) .aw-eyebrow { display: inline-flex; align-items: center; gap: calc(var(--u) * 1.4); }
+.aw[data-title="regal"]:not([data-style="minimal"]) .aw-eyebrow::before,
+.aw[data-title="regal"]:not([data-style="minimal"]) .aw-eyebrow::after { content: ""; width: calc(var(--u) * 1.1); height: calc(var(--u) * 1.1); background: var(--orn); transform: rotate(45deg); flex: none; }
+/* رمضان: سكينة */
+.aw[data-title="serene"] .aw-title { font-weight: 800; }
+/* العيدان: بهجة أوضح */
+.aw[data-title="festive"] { --ot: 1.12; }
+.aw[data-title="festive"] .aw-title { font-weight: 900; }
+.aw[data-title="festive"]:not([data-theme="light"]):not([data-style="split"]) .aw-title { color: var(--orn); }
+/* التعزية: وقار وهدوء */
+.aw[data-title="quiet"] { --ot: .86; }
+.aw[data-title="quiet"] .aw-title { font-weight: 700; }
+.aw[data-title="quiet"] .aw-eyebrow { color: var(--muted); font-weight: 600; }
+.aw[data-title="quiet"] .aw-body { line-height: 2; }
+.aw[data-title="quiet"] .aw-rings-a, .aw[data-title="quiet"] .aw-rings-b { opacity: .5; }
+/* المواليد: نعومة */
+.aw[data-title="soft"] { --ot: .96; }
+.aw[data-title="soft"][data-theme="light"] .aw-title { color: var(--teal); }
+/* النجاح والتكريم: خط ذهبي تحت العنوان */
+.aw[data-title="honor"] .aw-title::after { content: ""; display: block; width: calc(var(--u) * 12); height: calc(var(--u) * 0.6); background: var(--orn); border-radius: 99px; margin: calc(var(--u) * 1.6 * var(--fit)) auto 0; }
+.aw[data-title="honor"][data-align="start"] .aw-title::after { margin-inline-start: 0; }
+/* المهني: وسم مؤطر */
+.aw[data-title="pro"] .aw-eyebrow { border: calc(var(--u) * 0.16) solid var(--orn); color: var(--orn); border-radius: calc(var(--u) * 0.8); padding: calc(var(--u) * 0.3) calc(var(--u) * 1.8); }
+.aw[data-title="pro"][data-style="minimal"] .aw-eyebrow::before { display: none; }
+/* العائلي: شرفة نجدية صغيرة */
+.aw[data-title="warm"]:not([data-style="minimal"]) .aw-eyebrow { display: inline-flex; align-items: center; gap: calc(var(--u) * 1.2); }
+.aw[data-title="warm"]:not([data-style="minimal"]) .aw-eyebrow::before { content: ""; width: calc(var(--u) * 2.2); height: calc(var(--u) * 1.8); background: var(--orn); clip-path: polygon(50% 0, 100% 100%, 0 100%); flex: none; }
+/* الرحلات والبطولات: حيوية وحركة */
+.aw[data-title="bold"] { --ot: 1.1; }
+.aw[data-title="bold"] .aw-title { font-weight: 900; }
+.aw[data-title="bold"] .aw-eyebrow { background: var(--orn); color: #1C3F4E; border-radius: 99px; padding: calc(var(--u) * 0.35) calc(var(--u) * 2.4); }
+.aw[data-title="bold"][data-theme="light"] .aw-eyebrow, .aw[data-title="bold"] .aw-split .aw-eyebrow { color: #FFFFFF; }
+.aw[data-title="bold"][data-style="minimal"] .aw-eyebrow::before { display: none; }
+.aw[data-shape="square"] .aw-ground { width: 72%; left: 14%; }
+.aw[data-ground="mosque"][data-shape="square"] .aw-col, .aw[data-ground="mountains"][data-shape="square"] .aw-col { padding-bottom: calc(var(--u) * 19); }
